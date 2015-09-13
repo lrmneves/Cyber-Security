@@ -1,0 +1,7 @@
+Assignment 1 - Big Data Analytics
+
+Dataset: Cyber Security
+
+For this assignment, I have tryed to compile the information present on both datasets into a single dataset by mapping the attributes from both of them and storing the ones present in both datasets to a new dataset. I have also converted the columns ct_srv_src and ct_srv_dst from the UNSW dataset, that was a number from 1 to 100, to a percentage between 0 and 1, as it would fit the way the same info was presented on the KDD dataset.
+
+For the labels, I have mapped all the labels on both datasets to 5 labels: normal, dos, r2l, u2r and probe, as it is stated on the kdd attack_types file. For the UNSW dataset, I have manually mapped all the attack categories to one of the 5 labels.
