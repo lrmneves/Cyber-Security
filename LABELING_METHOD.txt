@@ -1,7 +1,12 @@
 Assignment 1 - Big Data Analytics
 
+Leonardo Neves
+github: lrmneves
+
 Dataset: Cyber Security
 
-For this assignment, I have tryed to compile the information present on both datasets into a single dataset by mapping the attributes from both of them and storing the ones present in both datasets to a new dataset. I have also converted the columns ct_srv_src and ct_srv_dst from the UNSW dataset, that was a number from 1 to 100, to a percentage between 0 and 1, as it would fit the way the same info was presented on the KDD dataset.
+For this assignment, I have first clustered the attack_categories as described next. Then, I have calculated a correlation matrix between all features on each dataset and filtered some features that were
+extremely correlated to each other, changing the labels so we know which features are being represented by that feature alone. Then, I have mapped features on both datasets so we do not have repeated information on two columns, converting them to the same format as needed. After that, I have put both datasets together, inserting a NaN value for missing values.
 
-For the labels, I have mapped all the labels on both datasets to 5 labels: normal, dos, r2l, u2r and probe, as it is stated on the kdd attack_types file. For the UNSW dataset, I have manually mapped all the attack categories to one of the 5 labels.
+For the attack_cat labels, I have mapped all the labels on both datasets to 5 labels: normal, dos, r2l, u2r and probe, as it is stated on the kdd attack_types file. For the UNSW dataset, I have manually mapped all the attack categories to one of the 5 labels and added a generic label that is only on this dataset, as I didn't have enough information to cluster it onto the other 5 labels. 
+Column label is a binary label, 0 for normal and 1 for attacks.
