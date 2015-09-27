@@ -1,6 +1,6 @@
 HW 2- Decision Tree
 
-My decision tree had a 76% accuracy on a 10k test set after training it on a 40k training set. It took around 1 minute to do all the computation on a macbook air 4gb ram.
+My decision tree had a 76% accuracy on a ~20k test set after training it on a ~80k training set. It took around 30 secs to 1 minute to do all the computation on a macbook air 4gb ram.
 Before starting the problem, I have modified my hw1 python code to interpolate on missing values. I didn't do anything fancy, just tested some algorithms and chose the one where the new values were not too similar to the existing values. 
 
 Regarding the decision tree, I have divided my approach into two different approaches, depending on the feature. For discrete features, at each split, I would test which value, when stored alone in a child, would result in a higher information gain. For continuous values, I would sort the instances based on the value and use a binary search to find the optimum split threshold.
