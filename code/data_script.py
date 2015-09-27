@@ -74,7 +74,7 @@ def getFilteredFeatures(data,X_cols,Y_cols,attributes,dict_attributes):
 
 def preprocess_kdd_data(row):
 	'''Add label column to dataset'''
-	if row['attack_cat'] != "normal" :
+	if row['attack_cat'] != "normal." :
    		return 1
    	return 0
   	
@@ -146,14 +146,17 @@ divide_set = set(["same_srv_rate","dst_host_same_srv_rate"])
 		Backdoors	r2l
 
 """
+data_dir = "/Users/lrmneves/workspace/Fall 2015/BigData/data/Cyber Security"
 attack_types_map ={}
-attack_names_data = open("../data/training_attack_types.txt","r")
+attack_names_data = open(data_dir +"/data/training_attack_types.txt","r")
 
 attack_names = attack_names_data.readlines()
 for attack in attack_names:
 	key_value = attack.split(" ")
 	if(len(key_value) > 1):
+		attack_types_map[key_value[0]+"."] = key_value[1][:-1]
 		attack_types_map[key_value[0]] = key_value[1][:-1]
+
 attack_names_data.close()
 
 attack_types_map["Reconnaissance"] = "probe"
@@ -170,7 +173,7 @@ attack_types_map["normal."] = "normal"
 
 #Loading the attribute names
 
-names_file = open("../data/kddcup.names.txt", "r")
+names_file = open(data_dir + "/data/kddcup.names.txt", "r")
 
 kdd_attributes = names_file.readlines()
 kdd_attributes = kdd_attributes[1:]
@@ -190,12 +193,12 @@ dict_attributes_kdd["label"] = i+2
 names_file.close()
 # my_data = np.genfromtxt('../data/kddcup.data_10_percent.csv', delimiter=',')
 
-data_kdd  = df.from_csv('../data/kddcup.data_10_percent.csv',header=None  ,sep=',', index_col=False)
+data_kdd  = df.from_csv(data_dir + '/data/kddcup.data_10_percent.csv',header=None  ,sep=',', index_col=False)
 data_kdd.columns = kdd_attributes
 
 #maps the attacks to their new categories
-for a_val, b_val in attack_types_map.iteritems():
-    data_kdd.loc[data_kdd.attack_cat==a_val, 'attack_cat'] = b_val
+
+
 #create label column
 data_kdd['label'] = data_kdd.apply (lambda row: preprocess_kdd_data(row),axis=1)
 kdd_attributes.append("label")
@@ -212,10 +215,11 @@ filt_attributes_kdd_data =getFilteredFeatures(data_kdd,X_cols,Y_cols,kdd_attribu
 
 print "Got features for kdd dataset"
 
-data_unsw  = df.from_csv("../data/UNSW_NB15_training-set.csv",header=0  ,sep=',', index_col=False)
+data_unsw  = df.from_csv(data_dir + "/data/UNSW_NB15_training-set.csv",header=0  ,sep=',', index_col=False)
 
-for a_val, b_val in attack_types_map.iteritems():
-    data_unsw.loc[data_unsw.attack_cat==a_val, 'attack_cat'] = b_val
+# for a_val, b_val in attack_types_map.iteritems():
+# 	print data_kdd.loc[data_kdd.attack_cat==a_val, 'attack_cat']
+# 	data_unsw.loc[data_unsw.attack_cat==a_val, 'attack_cat'] = b_val
 
 
 unsw_attributes = list(data_unsw.columns.values)
@@ -294,8 +298,17 @@ for att in new_names_dict:
 for k in keys:
 	if new_names_dict[k] not in final_attributes:
 		del new_names_dict[k]
+final_data.replace({"attack_cat": attack_types_map},inplace=True)
 
 final_data=final_data.rename(columns = new_names_dict)
-
+final_data.interpolate(method = "linear", inplace = True,axis = 0)
+# final_data.fillna(method='pad')
+msk = np.random.rand(len(final_data)) < 0.80
+final_data=final_data[~msk]
+msk = np.random.rand(len(final_data)) < 0.80
+train_data = final_data[msk]
+test_data = final_data[~msk]
 #save to csv
-final_data.to_csv("final_data.csv")
+train_data.to_csv("../output/train_data.csv")
+test_data.to_csv("../output/test_data.csv")
+
