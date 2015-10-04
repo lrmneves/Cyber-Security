@@ -1,0 +1,10 @@
+Accuracy for 1 tree forest
+Accuracy = 0.6126378755921302 STD = 0.2374360422136434
+Accuracy for 5 tree forest
+Accuracy = 0.65558244873967 STD = 0.19851288034040598
+Accuracy for 10 tree forest
+Accuracy = 0.6714238788423637 STD = 0.20668109312711858
+Accuracy for 50 tree forest
+Accuracy = 0.792992980878946 STD = 0.2244060345791299
+Accuracy for 100 tree forest
+Accuracy = 0.9041302167974827 STD = 0.029340612020980473
