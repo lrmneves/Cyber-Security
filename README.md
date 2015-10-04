@@ -1,4 +1,2 @@
 # Cyber-Security
-Please download data from CMU Box
-
-Leonardo Neves fork
+Working on creating a classifier to detect cyber attacks on a network using kdd99 dataset and UNSW dataset combined (~6M instances in total). Project stages include data preparation, decision tree and random forest implementation in Java, migrating computation to Hadoop on AWS and, for the last part, integrate it to Spark using Scala.
