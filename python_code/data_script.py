@@ -2,6 +2,7 @@ from pandas import DataFrame as df
 import pandas as pd 
 import numpy as np 
 import matplotlib.pyplot as plt
+from pandas.stats.api import ols
 
 def plot_cov_mat(cov_mat):
 	'''function to plot covariance matrix used first to identify the related features
@@ -303,12 +304,25 @@ final_data.replace({"attack_cat": attack_types_map},inplace=True)
 final_data=final_data.rename(columns = new_names_dict)
 final_data.interpolate(method = "linear", inplace = True,axis = 0)
 # final_data.fillna(method='pad')
-msk = np.random.rand(len(final_data)) < 0.80
-final_data=final_data[~msk]
-msk = np.random.rand(len(final_data)) < 0.80
-train_data = final_data[msk]
-test_data = final_data[~msk]
-#save to csv
-train_data.to_csv("../output/train_data.csv")
-test_data.to_csv("../output/test_data.csv")
+
+missing_values_data = final_data[final_data.isnull().any(axis=1)]
+complete_data = final_data[~final_data.isnull().any(axis=1)]
+
+
+	
+
+complete_data.to_csv("../output/complete_data.csv")
+missing_values_data.to_csv("../output/missing_values_data.csv")
+
+
+# msk = np.random.rand(len(final_data)) < 0.80
+# final_data=final_data[~msk]
+# msk = np.random.rand(len(final_data)) < 0.80
+# train_data = final_data[msk]
+# test_data = final_data[~msk]
+
+# #save to csv
+# train_data.to_csv("../output/train_data.csv")
+# test_data.to_csv("../output/test_data.csv")
+
 
