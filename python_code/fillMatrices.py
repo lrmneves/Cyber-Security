@@ -52,7 +52,7 @@ for i in range(18):
 	missing_data.iloc[:,24+i] = newC
 final_data = pd.concat([missing_data,complete_data])
 
-msk = np.random.rand(len(final_data)) < 0.70
+msk = np.random.rand(len(final_data)) < 0.50
 final_data=final_data[~msk]
 msk = np.random.rand(len(final_data)) < 0.80
 train_data = final_data[msk]
