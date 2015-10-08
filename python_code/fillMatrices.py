@@ -52,13 +52,15 @@ for i in range(18):
 	missing_data.iloc[:,24+i] = newC
 final_data = pd.concat([missing_data,complete_data])
 
-msk = np.random.rand(len(final_data)) < 0.50
+msk = np.random.rand(len(final_data)) < 0.80
 final_data=final_data[~msk]
 msk = np.random.rand(len(final_data)) < 0.80
 train_data = final_data[msk]
 test_data = final_data[~msk]
 train_data = normalize(train_data)
 test_data = normalize(test_data)
+print len(train_data)
+print len(test_data)
 #save to csv
 train_data.to_csv("../output/train_data.csv")
 test_data.to_csv("../output/test_data.csv")

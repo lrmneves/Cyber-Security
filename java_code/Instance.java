@@ -1,10 +1,15 @@
+import java.io.Serializable;
 import java.util.HashMap;
 /**
  * Instance object hold the values for each attribute and the respective labels for attack_cat and attack_or_not
  * @author lrmneves
  *
  */
-public class Instance {
+public class Instance implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//all the attributes
 	HashMap<String,String> attributes;
 	//labels[0] = attack_cat, labels[1] = "0" for normal, "1" for attack
