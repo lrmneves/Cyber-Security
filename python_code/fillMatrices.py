@@ -20,7 +20,8 @@ missing_data  = df.from_csv("../output/missing_values_data.csv",header=0  ,sep='
 
 
 columns = missing_data.iloc[:,1:].isnull().any()
-good_columns = []
+
+
 bad_columns = []
 for i in range(len(columns)):
 	if columns.iloc[i] == True:
@@ -32,16 +33,15 @@ for i in range(18):
 	# lr = GaussianProcess(theta0=1e-4, nugget=1e-10);
 	lr = LinearRegression()
     
-	only_good_dataset = pd.concat([normalize(complete_data.iloc[:,1:23+i]),complete_data.iloc[:,43]], axis=1)
+	only_good_dataset = pd.concat([normalize(complete_data.iloc[:,0:23+i]),complete_data.iloc[:,43]], axis=1)
 	only_bad_dataset = normalize(complete_data.iloc[:,24+i:42])
 	X =np.asarray(only_good_dataset)
 	y = np.asarray(only_bad_dataset.iloc[:,:1])
 
 
-
 	lr.fit(X, y)
 
-	missing_data_good_features = pd.concat([normalize(missing_data.iloc[:,1:23+i]),missing_data.iloc[:,43]], axis=1)
+	missing_data_good_features = pd.concat([normalize(missing_data.iloc[:,0:23+i]),missing_data.iloc[:,43]], axis=1)
 
 
 # print missing_data_good_features
@@ -52,13 +52,16 @@ for i in range(18):
 	missing_data.iloc[:,24+i] = newC
 final_data = pd.concat([missing_data,complete_data])
 
+
+final_data = final_data.iloc[:,1:] 
+
 msk = np.random.rand(len(final_data)) < 0.80
 final_data=final_data[~msk]
 msk = np.random.rand(len(final_data)) < 0.80
 train_data = final_data[msk]
 test_data = final_data[~msk]
-train_data = normalize(train_data)
-test_data = normalize(test_data)
+# train_data = normalize(train_data)
+# test_data = normalize(test_data)
 print len(train_data)
 print len(test_data)
 #save to csv
