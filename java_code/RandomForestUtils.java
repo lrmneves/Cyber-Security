@@ -3,6 +3,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import com.datastax.driver.core.Row;
 
 public class RandomForestUtils {
 	public static final String  CSV_SPLIT_BY = ",";//value to split csv data
@@ -26,25 +29,18 @@ public class RandomForestUtils {
 		}
 		return lineCount;
 	}
+	public static  ArrayList<Instance> loadData(){
+		return loadData("test_data");
+	}
 	public static  ArrayList<Instance> loadData(String path){
-		BufferedReader br = null;
-		String line = "";
+
 		ArrayList<Instance> data = new ArrayList<>();
-		try {
-			br = new BufferedReader(new FileReader(path));
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
+		List<Row> rows = CassandraCluster.selectAll(path);
+
+		for(Row r : rows){
+			data.add(RandomForest.currentForest.loadInstance(r));
 		}
-		try {
-			line = br.readLine(); // ignore header
-			int count = 0;
-			while ((line = br.readLine()) != null) {
-				data.add(RandomForest.currentForest.loadInstance(line,count++));
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
 		return data;
 	}
 }	

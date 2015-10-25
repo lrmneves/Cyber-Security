@@ -193,20 +193,20 @@ public class DecisionTreeNode implements Serializable {
 		double max = Integer.MIN_VALUE;
 		InformationGainObject obj = null;
 		double informationGain;
-		boolean gotLoop = false;
-		boolean gotComp = false;
 		ArrayList<Double> list = new ArrayList<>();
 		for(int i = 0; i < features.length;i++){
 			DecisionTreeNode [] children = getChildren(features[i]);
 			DecisionTreeNode left = children[0];
 			DecisionTreeNode right = children[1];
 
+			
 			informationGain = this.getEntropy().get(RandomForest.currentForest.classificationTask) - 
 					(((double) left.data.size()/data.size()) * left.getEntropy().get(RandomForest.currentForest.classificationTask) +
 							((double)right.data.size()/data.size())* right.getEntropy().get(RandomForest.currentForest.classificationTask));
 			list.add(informationGain);
 			if(informationGain > max){
 				obj = new InformationGainObject(informationGain,left,right,i);
+				max = informationGain;
 			}
 		}
 		if(obj == null){

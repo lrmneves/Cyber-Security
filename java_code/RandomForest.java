@@ -8,7 +8,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
+
+import com.datastax.driver.core.Row;
 
 public class RandomForest implements Serializable {
 
@@ -46,20 +49,26 @@ public class RandomForest implements Serializable {
 	//return error
 	public double testPrediction(){
 		double rightPred = 0;
-		
+		double zeroPred = 0;
 		for(Instance inst : currentTestData){
 			String pred = predict(inst);
 			rightPred += pred.equals(inst.getLabels().get(classificationTask))?1:0;
 		}
-//		return zeroPred;
-		
+		//		return zeroPred;
+
 		return (double)1.0 - rightPred/currentTestData.size();//returns the error
 	}
 	//return accuracy
-	public double predictLabels(String path){
-//		System.out.println("Predicting Labels");
-		int rightPred = 0;
-		ArrayList<Instance >data = RandomForestUtils.loadData(path);
+	public double predictLabels(){
+
+		double rightPred = 0.0;
+		ArrayList<Instance >data = new ArrayList<>();
+		List<Row> rows = CassandraCluster.selectAll("test");
+		for(Row r : rows){
+			Instance current = loadInstance(r); 
+			data.add(current);
+		}
+
 		for(Instance inst : data){
 			String pred = predict(inst);
 			rightPred += pred.equals(inst.getLabels().get(classificationTask))?1:0;
@@ -85,15 +94,16 @@ public class RandomForest implements Serializable {
 		classificationTask = type;
 	}
 	public void growForest(){
-//		if(forest.size() > 0) forest = new ArrayList<>();
-//		System.out.println("Growing forest");
-		
-//			if(i%(size*0.25) == 0){
-//			System.out.println("Creating tree #" + (i+1));
-//			}
-			createTree();
-		
-		
+		//		if(forest.size() > 0) forest = new ArrayList<>();
+		//		System.out.println("Growing forest");
+
+		//			if(i%(size*0.25) == 0){
+		//			System.out.println("Creating tree #" + (i+1));
+		//			}
+		createTree();
+		size++;
+
+
 	}
 	public void setSize(int size){
 		this.size = size;
@@ -104,7 +114,7 @@ public class RandomForest implements Serializable {
 		currentTestData = new ArrayList<Instance>(data.subList((int) (numInstances*0.66), data.size()));
 		String [] sampleFeatures = new String[(int) Math.sqrt(features.length)];
 		HashSet<Integer> repeated = new HashSet<>();
-		repeated.add(0);//ignore row count column
+		//		repeated.add(0);//ignore row count column
 		for(int i = 0; i < sampleFeatures.length;i++){
 			int idx = new Random().nextInt(features.length);
 			while(repeated.contains(idx)){
@@ -122,13 +132,26 @@ public class RandomForest implements Serializable {
 		forest.add(tree);
 	}
 
-	public void initializeHeaders(String line){
-		String [] allValues = line.split(RandomForestUtils.CSV_SPLIT_BY);
-		features = Arrays.copyOfRange(allValues,1,allValues.length-2);
+	public void initializeHeaders(){
+		List<Row> headers = CassandraCluster.getHeaders();
+		features = new String[headers.size()-3];
+		labels = new String[2];
+		for (Row r : headers){
+			int indx = r.getInt("ord");
+			if(indx > 0){
+				if(indx -1 >= features.length){
+					labels[indx-1-features.length] = r.getString("name");
+
+				}
+				else{
+					features[indx - 1] = r.getString("name");
+
+				}
+			}
+		}
 		for(String f: features){
 			uniqueValueMap.put(f,new HashSet<String>());
 		}
-		labels = Arrays.copyOfRange(allValues,allValues.length-2,allValues.length);
 		for(String l:labels){
 			uniqueValueMap.put(l,new HashSet<String>());
 
@@ -141,77 +164,59 @@ public class RandomForest implements Serializable {
 	 * @param csvFile
 	 * @param len
 	 */
-	public void loadData(String csvFile){
+	public void loadData(){
 
-		BufferedReader br = null;
-		String line = "";
 
-		try {
-			br = new BufferedReader(new FileReader(csvFile));
-			int instanceCount = 0;
-			while ((line = br.readLine()) != null) {
-				//initialize features and labels names and unique value maps
-				if(features == null){
-					initializeHeaders(line);
-				}
-				else{
-					Instance current = loadInstance(line,instanceCount); 
-					data.add(current);
-					instanceCount++;
-				}
-			}
-			numInstances = instanceCount;
-			if(classificationTask.equals(ClassificationType.ATTACK_CAT)){
-				uniqueLabels = uniqueValueMap.get(labels[0]).size();
+		//initialize features and labels names and unique value maps
+		CassandraCluster.startKeyspace();
+		initializeHeaders();
+		List<Row> rows = CassandraCluster.selectAll();
+		for(Row r : rows){
+			Instance current = loadInstance(r); 
+			data.add(current);
+		}
+
+		numInstances = rows.size();
+		if(classificationTask.equals(ClassificationType.ATTACK_CAT)){
+			uniqueLabels = uniqueValueMap.get(labels[0]).size();
+		}else{
+			uniqueLabels = uniqueValueMap.get(labels[1]).size();
+		}
+		for(String f : features){
+			if(uniqueValueMap.get(f).size() > 5){
+				featureTypesMap.put(f, FeatureType.CONTINUOUS);
 			}else{
-				uniqueLabels = uniqueValueMap.get(labels[1]).size();
-			}
-			for(String f : features){
-				if(uniqueValueMap.get(f).size() > 5){
-					featureTypesMap.put(f, FeatureType.CONTINUOUS);
-				}else{
-					featureTypesMap.put(f, FeatureType.DISCRETE);
-				}
-			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				featureTypesMap.put(f, FeatureType.DISCRETE);
 			}
 		}
+
+
 	}
+
 	/**
 	 * Given a line from the dataset, loads instance to Instance object
 	 * @param line
 	 * @param instanceCount
 	 * @return
 	 */
-	 Instance loadInstance(String line,int instanceCount){
-		String[] instance = line.split(RandomForestUtils.CSV_SPLIT_BY);
-		Instance current = new Instance(instanceCount,new HashMap<String,String>()
+	Instance loadInstance(Row r){
+
+		Instance current = new Instance(Integer.parseInt(r.getString("id")),new HashMap<String,String>()
 				,new HashMap<String,String>());
 		for(int i = 0; i < features.length + labels.length; i++){
 			if(i < features.length){
-				current.setAttribute(features[i],(instance[i+1] != "")? instance[i+1]:"NAN");
-				if(instance[i+1] != "") uniqueValueMap.get(features[i]).add(instance[i+1]);
+				current.setAttribute(features[i],r.getString(features[i]) != ""?r.getString(features[i]):"NAN");
+				if(r.getString(features[i]) != "") uniqueValueMap.get(features[i]).add(r.getString(features[i]));
 			}
 			else{
-				current.setLabel(labels[i-features.length], instance[i+1]);
+				current.setLabel(labels[i-features.length], r.getString(labels[i-features.length]));
 			}
 		}
 		return current;
 	}
-//	void pruneForest(int i){
-//		forest = (ArrayList<DecisionTree>) forest.subList(0, i);
-//	}
+	//	void pruneForest(int i){
+	//		forest = (ArrayList<DecisionTree>) forest.subList(0, i);
+	//	}
 	void clearData(){
 		data = new ArrayList<>();
 		currentTestData = new ArrayList<>();

@@ -20,21 +20,6 @@ public class DecisionTree implements Serializable{
 	}
 
 	/**
-	 * Loads test set and runs predict on all instances, calculating the accuracy of the model
-	 * @param path
-	 * @return
-	 */
-	public double predictLabels(String path){
-		
-		int rightPred = 0;
-		ArrayList<Instance >data = RandomForestUtils.loadData(path);
-		for(Instance inst : data){
-			rightPred += predict(inst).equals(inst.getLabels().get(RandomForest.currentForest.classificationTask))?1:0;
-		}
-		return (double) rightPred/data.size();//returns the accuracy
-	}
-
-	/**
 	 * Given an instance, predict its class and returns 1 if prediction was correct and 0 otherwise
 	 * @param inst
 	 * @param head
