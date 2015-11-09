@@ -11,15 +11,16 @@ import static java.lang.System.out;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.List;
 
 
 public class CassandraCluster
 {
 	private static Cluster cluster = null;
-	private static String keyspace = null;
+	private final static String keyspace = "bigdata_class";;
 	private static Session session = null;
-
+	private static Host host = null;
 
 	public static void connect(final String node, final int port)
 	{  if(cluster != null) return;
@@ -27,12 +28,15 @@ public class CassandraCluster
 	final Metadata metadata = cluster.getMetadata();
 	out.printf("Connected to cluster: %s\n", metadata.getClusterName());
 	for (final Host host : metadata.getAllHosts())
-	{
+	{	
+
 		out.printf("Datacenter: %s; Host: %s; Rack: %s\n",
 				host.getDatacenter(), host.getAddress(), host.getRack());
+		CassandraCluster.host = host;
 	}
 	session = cluster.connect();
 	}
+
 	public static void connect(){
 		connect("localhost",9042); 
 	}
@@ -45,7 +49,7 @@ public class CassandraCluster
 		Statement statement = QueryBuilder
 				.select()
 				.all()
-				.from("train_data", "header_order");
+				.from(keyspace, "header_order");
 
 		return getSession()
 				.execute(statement)
@@ -58,7 +62,7 @@ public class CassandraCluster
 		Statement statement = QueryBuilder
 				.select()
 				.all()
-				.from("cyber_sec")
+				.from(keyspace,"cyber_sec")
 				.where(QueryBuilder.eq("type",name));
 
 
@@ -67,6 +71,8 @@ public class CassandraCluster
 				.all();
 	} 
 	public static void persistErrorValues(String exp, String type, int treeNum, double error){
+		session.execute("USE "+keyspace);
+
 		String query = "INSERT INTO result (experiment,type, tree_num, error) VALUES('"
 				+ exp+"','"+type+"'," + treeNum + ',' + error+");";
 		try{
@@ -116,7 +122,45 @@ public class CassandraCluster
 		}
 
 	}
-
+	public static void createTreeTable(){
+		String query = "CREATE TABLE tree_table (experiment text PRIMARY KEY,tree text) with COMPACT STORAGE ;";
+		try{
+			session.execute(query);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	public static void resetTreeTable(){
+		String query = "DROP TABLE tree_table;";
+		try{
+			session.execute(query);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		createTreeTable();
+	}
+	public static void createForestTable(){
+		String query = "CREATE TABLE forest_table (experiment text PRIMARY KEY,forest text) with COMPACT STORAGE ;";
+		try{
+			session.execute(query);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	public static String getForestString(String experiment){
+		Statement statement = QueryBuilder
+				.select()
+				.all()
+				.from(keyspace,"forest_table")
+				.where(QueryBuilder.eq("experiment",experiment));
+		List<Row> result = getSession()
+				.execute(statement)
+				.all();
+		if(result.size() == 0) return null;
+		Row r = result.get(0);
+		
+		return r.getString("forest");
+	}
 	public static void  createTable(String trainFile,String testFile) throws IOException{
 
 
@@ -128,11 +172,12 @@ public class CassandraCluster
 		String[] path = trainFile.split("/");
 		String pathend = path[path.length-1];
 
-		keyspace = "bigdata_class";
+
 		createKeyspace();
 
 		createHeadersTable();
-
+		createTreeTable();
+		createForestTable();
 		//Creates cyber_sec table with the columns from csv and the prefix of the insert statement
 		StringBuilder builder = new StringBuilder("CREATE TABLE cyber_sec (id text "
 				+ "PRIMARY KEY, ");
@@ -200,7 +245,9 @@ public class CassandraCluster
 		//create results table
 		createResultsTable();
 	}
-
+	public static String getAddress(){
+		return host.getAddress().toString();
+	}
 	public static void close()
 	{
 		cluster.close();
@@ -214,5 +261,9 @@ public class CassandraCluster
 		}
 		session.execute("USE "+keyspace);
 
+	}
+	public static String getKeyspace() {
+		// TODO Auto-generated method stub
+		return keyspace;
 	}
 }

@@ -26,19 +26,19 @@ public class DecisionTreeTest {
 	@Before
 	public void initObjects() {
 
-		forest = new RandomForest(1);
+		forest = new RandomForest(10);
 	}
-	//	@Test
-	//	public void testCreateTable(){
-	//		CassandraCluster.connect();
-	//		try {
-	//			CassandraCluster.createTable(dataDir + "train_data.csv",dataDir +"test_data.csv");
-	//		} catch (IOException e) {
-	//			// TODO Auto-generated catch block
-	//			e.printStackTrace();
-	//		}
-	//		CassandraCluster.close();
-	//	}
+			@Test
+			public void testCreateTable(){
+				CassandraCluster.connect();
+				try {
+					CassandraCluster.createTable(dataDir + "train_data.csv",dataDir +"test_data.csv");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				CassandraCluster.close();
+			}
 	public double std(ArrayList<Double> list){
 		double mean = mean(list);
 		for( int i = 0; i < list.size();i++){
@@ -63,7 +63,7 @@ public class DecisionTreeTest {
 		forest.loadData();
 
 		System.out.println("Loaded Data");
-		int N = 100;
+		int N = 10;
 		ArrayList<Double> list = new ArrayList<>();
 		String type = "train";
 		Date date= new Date();
@@ -96,22 +96,22 @@ public class DecisionTreeTest {
 	}
 
 
-	@Test
-	public void reuseModelTest(){
-		CassandraCluster.connect();
-
-		CassandraCluster.startKeyspace();
-		forest = TreeSerializer.openTree(modelDir+"forest.json");
-		//		RandomForest bestModel =  TreeSerializer.openTree(modelDir+"bestModel.json");
-		String type = "test";
-		Date date= new Date();
-		long time = date.getTime();
-		String exp = type + time;
-		CassandraCluster.persistErrorValues(exp,type,forest.size,1-forest.predictLabels());
-		
-		CassandraCluster.close();
-
-		//		forest = new RandomForest();
-	}
+//	@Test
+//	public void reuseModelTest(){
+//		CassandraCluster.connect();
+//
+//		CassandraCluster.startKeyspace();
+//		forest = TreeSerializer.openTree(modelDir+"forest.json");
+//		//		RandomForest bestModel =  TreeSerializer.openTree(modelDir+"bestModel.json");
+//		String type = "test";
+//		Date date= new Date();
+//		long time = date.getTime();
+//		String exp = type + time;
+//		CassandraCluster.persistErrorValues(exp,type,forest.size,1-forest.predictLabels());
+//		
+//		CassandraCluster.close();
+//
+//		//		forest = new RandomForest();
+//	}
 
 }

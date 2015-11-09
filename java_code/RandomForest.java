@@ -1,3 +1,6 @@
+
+
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -76,7 +79,7 @@ public class RandomForest implements Serializable {
 		return (double) rightPred/data.size();//returns the accuracy
 	}
 	public RandomForest(){
-		this(100);
+		this(0);
 	}
 	public RandomForest(int size){
 		features = null;
@@ -105,25 +108,22 @@ public class RandomForest implements Serializable {
 
 
 	}
+	public void addTree(DecisionTree tree){
+		forest.add(tree);
+		size++;
+	}
 	public void setSize(int size){
 		this.size = size;
 	}
+	
 	public void createTree(){
 		Collections.shuffle(data);
 		ArrayList<Instance> sampleData = new ArrayList<Instance>(data.subList(0, (int) (numInstances*0.66)));
 		currentTestData = new ArrayList<Instance>(data.subList((int) (numInstances*0.66), data.size()));
-		String [] sampleFeatures = new String[(int) Math.sqrt(features.length)];
-		HashSet<Integer> repeated = new HashSet<>();
-		//		repeated.add(0);//ignore row count column
-		for(int i = 0; i < sampleFeatures.length;i++){
-			int idx = new Random().nextInt(features.length);
-			while(repeated.contains(idx)){
-				idx = new Random().nextInt(features.length);
-			}
-			repeated.add(idx);
-			sampleFeatures[i] = features[idx];
-		}
-		DecisionTree tree = new DecisionTree(new DecisionTreeNode(sampleFeatures,sampleData));
+		
+		DecisionTree tree = new DecisionTree(new DecisionTreeNode(
+				RandomForestUtils.getSampleFeatures(this.features),sampleData,null));
+		tree.head.tree = tree;
 		try {
 			tree.buildTree();
 		} catch (DataNotLoadedException e) {

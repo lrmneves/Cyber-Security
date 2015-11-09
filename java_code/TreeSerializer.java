@@ -60,7 +60,6 @@ public class TreeSerializer {
 		}
 		writer.write(gson.toJson(forest));
 		writer.close();
-		
 		return gson.toJson(forest);
 	}
 	static RandomForest openTree(String path){

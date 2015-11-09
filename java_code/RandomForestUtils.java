@@ -3,7 +3,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 
 import com.datastax.driver.core.Row;
 
@@ -43,4 +45,20 @@ public class RandomForestUtils {
 
 		return data;
 	}
+	public static String [] getSampleFeatures(String [] features){
+		
+		String [] sampleFeatures = new String[(int) Math.sqrt(features.length)];
+		HashSet<Integer> repeated = new HashSet<>();
+		//		repeated.add(0);//ignore row count column
+		for(int i = 0; i < sampleFeatures.length;i++){
+			int idx = new Random().nextInt(features.length);
+			while(repeated.contains(idx)){
+				idx = new Random().nextInt(features.length);
+			}
+			repeated.add(idx);
+			sampleFeatures[i] = features[idx];
+		}
+		return sampleFeatures;
+	}
+	
 }	

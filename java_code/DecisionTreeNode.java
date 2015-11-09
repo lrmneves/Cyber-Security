@@ -22,15 +22,22 @@ public class DecisionTreeNode implements Serializable {
 	String futureSplitFeature = ""; //value which divide the data into two child. 
 	String pastSplitFeatureValue =""; // the threshold of previous split. Only left child has this value set
 	String classificationLabel = ""; //label to be predicted to an instance who ends up here. Only leaf nodes have this
+	DecisionTree tree;
+	
 	//value set.
-
-
-	public DecisionTreeNode(String [] features, ArrayList<Instance> data){
+	public DecisionTreeNode(){
+		left = null;
+		right = null;
+		this.data = new ArrayList<>();
+	}
+	
+	public DecisionTreeNode(String [] features, ArrayList<Instance> data,DecisionTree tree){
 		left = null;
 		right = null;
 		this.data = data;
 		if (this.data ==null) this.data = new ArrayList<Instance>();
 		this.features = features;
+		this.tree = tree;
 	}
 
 	/**
@@ -43,17 +50,17 @@ public class DecisionTreeNode implements Serializable {
 		HashMap<String,HashMap<String,Integer>> countMap = new HashMap<>();
 		//all features will have arraylists of counts for each label
 
-		countMap.put(RandomForest.currentForest.classificationTask, new HashMap<String,Integer>());
+		countMap.put(RandomForest.currentForest == null?ClassificationType.ATTACK_OR_NOT:RandomForest.currentForest.classificationTask, new HashMap<String,Integer>());
 		//return map with all calculated entropies 
 		HashMap<String,Double> entropyMap = new HashMap<>();
 		//for each instance in data, increment the feature count for their label.
 		for(Instance inst : data){
 			//get label related to the classification task
-			String label = inst.getLabels().get(RandomForest.currentForest.classificationTask);
+			String label = inst.getLabels().get(RandomForest.currentForest == null?ClassificationType.ATTACK_OR_NOT:RandomForest.currentForest.classificationTask);
 
-			if(!countMap.get(RandomForest.currentForest.classificationTask).containsKey(label)) countMap.get(
+			if(!countMap.get(RandomForest.currentForest == null?ClassificationType.ATTACK_OR_NOT:RandomForest.currentForest.classificationTask).containsKey(label)) countMap.get(
 					RandomForest.currentForest.classificationTask).put(label, 0);
-			countMap.get(RandomForest.currentForest.classificationTask).put(label, countMap.get(RandomForest.currentForest.classificationTask).get(label) +1);
+			countMap.get(RandomForest.currentForest == null?ClassificationType.ATTACK_OR_NOT:RandomForest.currentForest.classificationTask).put(label, countMap.get(RandomForest.currentForest == null?ClassificationType.ATTACK_OR_NOT:RandomForest.currentForest.classificationTask).get(label) +1);
 		}
 		//calculate the entropy for each feature
 		for(String f : countMap.keySet()){
@@ -85,9 +92,13 @@ public class DecisionTreeNode implements Serializable {
 		DecisionTreeNode [] children = new DecisionTreeNode[2];
 		DecisionTreeNode left = null;
 		DecisionTreeNode right = null;
-
-		FeatureType type = RandomForest.currentForest.featureTypesMap.get(feature);
-		Iterator<String> it = RandomForest.currentForest.uniqueValueMap.get(feature).iterator();
+		boolean hadoop = false;
+		if(RandomForest.currentForest == null ||RandomForest.currentForest.featureTypesMap == null ||RandomForest.currentForest.featureTypesMap.size() ==0 ){
+			this.tree.createMaps();
+			hadoop = true;
+		}
+		FeatureType type = hadoop?this.tree.featureTypesMap.get(feature):RandomForest.currentForest.featureTypesMap.get(feature);
+		Iterator<String> it =hadoop?this.tree.uniqueValueMap.get(feature).iterator():RandomForest.currentForest.uniqueValueMap.get(feature).iterator();
 		//if discrete value, work on separating them into two groups
 		if(type.equals(FeatureType.DISCRETE)){
 			//If values are discrete, test all combinations of separating all values to one child and all other vlaues
@@ -96,8 +107,8 @@ public class DecisionTreeNode implements Serializable {
 			//Separates all values of a group on a child and all others to the other child.
 			while(it.hasNext()){
 				String v1 = it.next();
-				DecisionTreeNode auxLeft = new DecisionTreeNode(features,null);
-				DecisionTreeNode auxRight = new DecisionTreeNode(features,null);
+				DecisionTreeNode auxLeft = new DecisionTreeNode(features,null,tree);
+				DecisionTreeNode auxRight = new DecisionTreeNode(features,null,tree);
 				for(Instance inst: data){
 					if(inst.getAttributes().get(feature).equals(v1)){
 						auxLeft.addInstance(inst);
@@ -105,14 +116,14 @@ public class DecisionTreeNode implements Serializable {
 						auxRight.addInstance(inst);
 					}
 				}
-				if(auxLeft.getEntropy().get(RandomForest.currentForest.classificationTask)*((double)auxLeft.data.size()/data.size()) + 
-						auxRight.getEntropy().get(RandomForest.currentForest.classificationTask)*
+				if(auxLeft.getEntropy().get(hadoop?ClassificationType.ATTACK_OR_NOT:RandomForest.currentForest.classificationTask)*((double)auxLeft.data.size()/data.size()) + 
+						auxRight.getEntropy().get(RandomForest.currentForest == null?ClassificationType.ATTACK_OR_NOT:RandomForest.currentForest.classificationTask)*
 						((double)auxRight.data.size()/data.size()) < minEntropy ){
 					left = auxLeft;
 					left.pastSplitFeatureValue = v1;
 					right = auxRight;
 				}
-				if(RandomForest.currentForest.uniqueValueMap.get(feature).size() <3) break;
+				if((hadoop?this.tree.uniqueValueMap.get(feature).size():RandomForest.currentForest.uniqueValueMap.get(feature).size()) <3) break;
 			}
 		}else{
 			//If values are continuous, sort values and look for the best split using binary search.
@@ -128,12 +139,12 @@ public class DecisionTreeNode implements Serializable {
 			int mid = (start+end)/2;
 			double variation = Integer.MAX_VALUE;
 			double minEntropy = Integer.MAX_VALUE;
-			auxLeft = new DecisionTreeNode(features,null);
-			auxRight = new DecisionTreeNode(features,null);
+			auxLeft = new DecisionTreeNode(features,null,tree);
+			auxRight = new DecisionTreeNode(features,null,tree);
 
 			auxLeft.data.addAll(data.subList(0, mid));
 			auxRight.data.addAll(data.subList(mid, end));
-			minEntropy = auxLeft.getEntropy().get(RandomForest.currentForest.classificationTask)*((double)auxLeft.data.size()/data.size()) + 
+			minEntropy = auxLeft.getEntropy().get(RandomForest.currentForest == null?ClassificationType.ATTACK_OR_NOT:RandomForest.currentForest.classificationTask)*((double)auxLeft.data.size()/data.size()) + 
 					auxRight.getEntropy().get(RandomForest.currentForest.classificationTask)*
 					((double)auxRight.data.size()/data.size());
 			left = auxLeft;
@@ -153,8 +164,8 @@ public class DecisionTreeNode implements Serializable {
 			while(start <= end && variation > 0.01){
 				mid = (start + end)/2;
 
-				auxLeft = new DecisionTreeNode(features,null);
-				auxRight = new DecisionTreeNode(features,null);
+				auxLeft = new DecisionTreeNode(features,null,tree);
+				auxRight = new DecisionTreeNode(features,null,tree);
 				auxLeft.data.addAll(data.subList(0, mid));
 				auxRight.data.addAll(data.subList(mid, data.size()));
 
@@ -228,7 +239,7 @@ public class DecisionTreeNode implements Serializable {
 			current = stack.pop();
 			HashSet<String> labelSet = new HashSet<>();
 			for(Instance ins : current.data){
-				labelSet.add(ins.getLabels().get(RandomForest.currentForest.classificationTask));
+				labelSet.add(ins.getLabels().get(RandomForest.currentForest == null?ClassificationType.ATTACK_OR_NOT:RandomForest.currentForest.classificationTask));
 			}
 
 			if(labelSet.size()<2) continue;
@@ -245,9 +256,9 @@ public class DecisionTreeNode implements Serializable {
 				stack.push(current.right);
 			}
 			else current.right = null;
-			if (current.isLeaf()){
-				current.calculateClassLabel();
-			}
+			
+//			current.calculateClassLabel();
+			
 			if(maxGain != null)current.futureSplitFeature = features[maxGain.featureIdx];
 		}
 
@@ -261,7 +272,7 @@ public class DecisionTreeNode implements Serializable {
 		HashMap<String,Integer> countMap = new HashMap<>();
 
 		for(Instance i : data){
-			String label = i.labels.get(RandomForest.currentForest.classificationTask);
+			String label = i.labels.get(RandomForest.currentForest == null?ClassificationType.ATTACK_OR_NOT:RandomForest.currentForest.classificationTask);
 			if(!countMap.containsKey(label)){
 				countMap.put(label, 0);
 			}
@@ -282,9 +293,6 @@ public class DecisionTreeNode implements Serializable {
 		left = null;
 		right = null;
 		data = new ArrayList<>();
-	}
-	public DecisionTreeNode(){
-		this(0);
 	}
 
 	public DecisionTreeNode getLeft() {
@@ -322,12 +330,15 @@ public class DecisionTreeNode implements Serializable {
 		if(isLeaf()) return 0;
 		return Math.max(left.getH(), right.getH()) +1;
 	}
-
+	public void setFeatures(String [] features){
+		this.features = features;
+	}
 	public void clearData() {
 		this.data = new ArrayList<Instance>();
-		
+		this.tree = null;
 		if(left != null)left.clearData();
 		if(right != null) right.clearData();
+		
 
 	}
 
