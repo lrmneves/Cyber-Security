@@ -1,0 +1,2329 @@
+{
+  "Forest": [
+    {
+      "Head": {
+        "Features": [
+          "dinpkt",
+          "type",
+          "count",
+          "dmean",
+          "trans_depth",
+          "rerror_rate"
+        ],
+        "Left": {
+          "Features": [
+            "dinpkt",
+            "type",
+            "count",
+            "dmean",
+            "trans_depth",
+            "rerror_rate"
+          ],
+          "Left": {
+            "Features": [
+              "dinpkt",
+              "type",
+              "count",
+              "dmean",
+              "trans_depth",
+              "rerror_rate"
+            ],
+            "Left": {
+              "Features": [
+                "dinpkt",
+                "type",
+                "count",
+                "dmean",
+                "trans_depth",
+                "rerror_rate"
+              ],
+              "Left": null,
+              "Right": null,
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.6235702082127974
+              },
+              "FutureSplitFeature": "dinpkt",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "1",
+              "Tree": null
+            },
+            "Right": {
+              "Features": [
+                "dinpkt",
+                "type",
+                "count",
+                "dmean",
+                "trans_depth",
+                "rerror_rate"
+              ],
+              "Left": {
+                "Features": [
+                  "dinpkt",
+                  "type",
+                  "count",
+                  "dmean",
+                  "trans_depth",
+                  "rerror_rate"
+                ],
+                "Left": null,
+                "Right": null,
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.0
+                },
+                "FutureSplitFeature": "",
+                "PastSplitFeatureValue": "126.0",
+                "ClassificationLabel": "1",
+                "Tree": null
+              },
+              "Right": {
+                "Features": [
+                  "dinpkt",
+                  "type",
+                  "count",
+                  "dmean",
+                  "trans_depth",
+                  "rerror_rate"
+                ],
+                "Left": null,
+                "Right": null,
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.9788698505067783
+                },
+                "FutureSplitFeature": "dinpkt",
+                "PastSplitFeatureValue": "",
+                "ClassificationLabel": "0",
+                "Tree": null
+              },
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.9967916319816366
+              },
+              "FutureSplitFeature": "dmean",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "0",
+              "Tree": null
+            },
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.9290083681703217
+            },
+            "FutureSplitFeature": "dinpkt",
+            "PastSplitFeatureValue": "0.00210705952028",
+            "ClassificationLabel": "1",
+            "Tree": null
+          },
+          "Right": {
+            "Features": [
+              "dinpkt",
+              "type",
+              "count",
+              "dmean",
+              "trans_depth",
+              "rerror_rate"
+            ],
+            "Left": null,
+            "Right": null,
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.0
+            },
+            "FutureSplitFeature": "",
+            "PastSplitFeatureValue": "",
+            "ClassificationLabel": "0",
+            "Tree": null
+          },
+          "Data": [],
+          "EntropyValueMap": {
+            "label": 0.8622065805648653
+          },
+          "FutureSplitFeature": "trans_depth",
+          "PastSplitFeatureValue": "0.00360293668646",
+          "ClassificationLabel": "0",
+          "Tree": null
+        },
+        "Right": {
+          "Features": [
+            "dinpkt",
+            "type",
+            "count",
+            "dmean",
+            "trans_depth",
+            "rerror_rate"
+          ],
+          "Left": null,
+          "Right": null,
+          "Data": [],
+          "EntropyValueMap": {
+            "label": 0.1968811534930616
+          },
+          "FutureSplitFeature": "count",
+          "PastSplitFeatureValue": "",
+          "ClassificationLabel": "1",
+          "Tree": null
+        },
+        "Data": [],
+        "EntropyValueMap": {
+          "label": 0.7243311988875252
+        },
+        "FutureSplitFeature": "trans_depth",
+        "PastSplitFeatureValue": "",
+        "ClassificationLabel": "1",
+        "Tree": null
+      },
+      "FeatureTypesMap": {
+        "rerror_rate": "CONTINUOUS",
+        "count": "CONTINUOUS",
+        "dmean": "CONTINUOUS",
+        "type": "DISCRETE",
+        "dinpkt": "CONTINUOUS",
+        "trans_depth": "CONTINUOUS"
+      },
+      "UniqueValueMap": null
+    },
+    {
+      "Head": {
+        "Features": [
+          "src_bytes",
+          "rate",
+          "dpkts",
+          "ct_state_ttl",
+          "num_file_creations",
+          "num_outbound_cmds"
+        ],
+        "Left": {
+          "Features": [
+            "src_bytes",
+            "rate",
+            "dpkts",
+            "ct_state_ttl",
+            "num_file_creations",
+            "num_outbound_cmds"
+          ],
+          "Left": null,
+          "Right": null,
+          "Data": [],
+          "EntropyValueMap": {
+            "label": 0.1460942501201363
+          },
+          "FutureSplitFeature": "rate",
+          "PastSplitFeatureValue": "",
+          "ClassificationLabel": "1",
+          "Tree": null
+        },
+        "Right": {
+          "Features": [
+            "src_bytes",
+            "rate",
+            "dpkts",
+            "ct_state_ttl",
+            "num_file_creations",
+            "num_outbound_cmds"
+          ],
+          "Left": {
+            "Features": [
+              "src_bytes",
+              "rate",
+              "dpkts",
+              "ct_state_ttl",
+              "num_file_creations",
+              "num_outbound_cmds"
+            ],
+            "Left": {
+              "Features": [
+                "src_bytes",
+                "rate",
+                "dpkts",
+                "ct_state_ttl",
+                "num_file_creations",
+                "num_outbound_cmds"
+              ],
+              "Left": {
+                "Features": [
+                  "src_bytes",
+                  "rate",
+                  "dpkts",
+                  "ct_state_ttl",
+                  "num_file_creations",
+                  "num_outbound_cmds"
+                ],
+                "Left": null,
+                "Right": null,
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.0
+                },
+                "FutureSplitFeature": "",
+                "PastSplitFeatureValue": "0.302516798486",
+                "ClassificationLabel": "0",
+                "Tree": null
+              },
+              "Right": {
+                "Features": [
+                  "src_bytes",
+                  "rate",
+                  "dpkts",
+                  "ct_state_ttl",
+                  "num_file_creations",
+                  "num_outbound_cmds"
+                ],
+                "Left": null,
+                "Right": null,
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.0
+                },
+                "FutureSplitFeature": "",
+                "PastSplitFeatureValue": "",
+                "ClassificationLabel": "1",
+                "Tree": null
+              },
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.83294582353614
+              },
+              "FutureSplitFeature": "rate",
+              "PastSplitFeatureValue": "0.312577491617",
+              "ClassificationLabel": "0",
+              "Tree": null
+            },
+            "Right": {
+              "Features": [
+                "src_bytes",
+                "rate",
+                "dpkts",
+                "ct_state_ttl",
+                "num_file_creations",
+                "num_outbound_cmds"
+              ],
+              "Left": {
+                "Features": [
+                  "src_bytes",
+                  "rate",
+                  "dpkts",
+                  "ct_state_ttl",
+                  "num_file_creations",
+                  "num_outbound_cmds"
+                ],
+                "Left": null,
+                "Right": null,
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.0
+                },
+                "FutureSplitFeature": "",
+                "PastSplitFeatureValue": "0.330119166764",
+                "ClassificationLabel": "1",
+                "Tree": null
+              },
+              "Right": {
+                "Features": [
+                  "src_bytes",
+                  "rate",
+                  "dpkts",
+                  "ct_state_ttl",
+                  "num_file_creations",
+                  "num_outbound_cmds"
+                ],
+                "Left": {
+                  "Features": [
+                    "src_bytes",
+                    "rate",
+                    "dpkts",
+                    "ct_state_ttl",
+                    "num_file_creations",
+                    "num_outbound_cmds"
+                  ],
+                  "Left": {
+                    "Features": [
+                      "src_bytes",
+                      "rate",
+                      "dpkts",
+                      "ct_state_ttl",
+                      "num_file_creations",
+                      "num_outbound_cmds"
+                    ],
+                    "Left": {
+                      "Features": [
+                        "src_bytes",
+                        "rate",
+                        "dpkts",
+                        "ct_state_ttl",
+                        "num_file_creations",
+                        "num_outbound_cmds"
+                      ],
+                      "Left": null,
+                      "Right": null,
+                      "Data": [],
+                      "EntropyValueMap": {
+                        "label": 0.0
+                      },
+                      "FutureSplitFeature": "",
+                      "PastSplitFeatureValue": "104",
+                      "ClassificationLabel": "1",
+                      "Tree": null
+                    },
+                    "Right": {
+                      "Features": [
+                        "src_bytes",
+                        "rate",
+                        "dpkts",
+                        "ct_state_ttl",
+                        "num_file_creations",
+                        "num_outbound_cmds"
+                      ],
+                      "Left": null,
+                      "Right": null,
+                      "Data": [],
+                      "EntropyValueMap": {
+                        "label": 0.0
+                      },
+                      "FutureSplitFeature": "",
+                      "PastSplitFeatureValue": "",
+                      "ClassificationLabel": "0",
+                      "Tree": null
+                    },
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.7219280948873623
+                    },
+                    "FutureSplitFeature": "src_bytes",
+                    "PastSplitFeatureValue": "104",
+                    "ClassificationLabel": "0",
+                    "Tree": null
+                  },
+                  "Right": {
+                    "Features": [
+                      "src_bytes",
+                      "rate",
+                      "dpkts",
+                      "ct_state_ttl",
+                      "num_file_creations",
+                      "num_outbound_cmds"
+                    ],
+                    "Left": null,
+                    "Right": null,
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.4586858162005403
+                    },
+                    "FutureSplitFeature": "rate",
+                    "PastSplitFeatureValue": "",
+                    "ClassificationLabel": "1",
+                    "Tree": null
+                  },
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.710676853856123
+                  },
+                  "FutureSplitFeature": "src_bytes",
+                  "PastSplitFeatureValue": "6.0",
+                  "ClassificationLabel": "1",
+                  "Tree": null
+                },
+                "Right": {
+                  "Features": [
+                    "src_bytes",
+                    "rate",
+                    "dpkts",
+                    "ct_state_ttl",
+                    "num_file_creations",
+                    "num_outbound_cmds"
+                  ],
+                  "Left": null,
+                  "Right": null,
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.0
+                  },
+                  "FutureSplitFeature": "",
+                  "PastSplitFeatureValue": "",
+                  "ClassificationLabel": "0",
+                  "Tree": null
+                },
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.8721617883411699
+                },
+                "FutureSplitFeature": "ct_state_ttl",
+                "PastSplitFeatureValue": "",
+                "ClassificationLabel": "1",
+                "Tree": null
+              },
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.3792884876866556
+              },
+              "FutureSplitFeature": "rate",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "1",
+              "Tree": null
+            },
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.7866653428401669
+            },
+            "FutureSplitFeature": "rate",
+            "PastSplitFeatureValue": "",
+            "ClassificationLabel": "1",
+            "Tree": null
+          },
+          "Right": {
+            "Features": [
+              "src_bytes",
+              "rate",
+              "dpkts",
+              "ct_state_ttl",
+              "num_file_creations",
+              "num_outbound_cmds"
+            ],
+            "Left": {
+              "Features": [
+                "src_bytes",
+                "rate",
+                "dpkts",
+                "ct_state_ttl",
+                "num_file_creations",
+                "num_outbound_cmds"
+              ],
+              "Left": {
+                "Features": [
+                  "src_bytes",
+                  "rate",
+                  "dpkts",
+                  "ct_state_ttl",
+                  "num_file_creations",
+                  "num_outbound_cmds"
+                ],
+                "Left": null,
+                "Right": null,
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.0
+                },
+                "FutureSplitFeature": "",
+                "PastSplitFeatureValue": "0.231975488583",
+                "ClassificationLabel": "0",
+                "Tree": null
+              },
+              "Right": {
+                "Features": [
+                  "src_bytes",
+                  "rate",
+                  "dpkts",
+                  "ct_state_ttl",
+                  "num_file_creations",
+                  "num_outbound_cmds"
+                ],
+                "Left": null,
+                "Right": null,
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.7120640548905479
+                },
+                "FutureSplitFeature": "src_bytes",
+                "PastSplitFeatureValue": "",
+                "ClassificationLabel": "0",
+                "Tree": null
+              },
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.2824748854120174
+              },
+              "FutureSplitFeature": "rate",
+              "PastSplitFeatureValue": "29.338319",
+              "ClassificationLabel": "0",
+              "Tree": null
+            },
+            "Right": {
+              "Features": [
+                "src_bytes",
+                "rate",
+                "dpkts",
+                "ct_state_ttl",
+                "num_file_creations",
+                "num_outbound_cmds"
+              ],
+              "Left": {
+                "Features": [
+                  "src_bytes",
+                  "rate",
+                  "dpkts",
+                  "ct_state_ttl",
+                  "num_file_creations",
+                  "num_outbound_cmds"
+                ],
+                "Left": {
+                  "Features": [
+                    "src_bytes",
+                    "rate",
+                    "dpkts",
+                    "ct_state_ttl",
+                    "num_file_creations",
+                    "num_outbound_cmds"
+                  ],
+                  "Left": null,
+                  "Right": null,
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.0
+                  },
+                  "FutureSplitFeature": "",
+                  "PastSplitFeatureValue": "130",
+                  "ClassificationLabel": "1",
+                  "Tree": null
+                },
+                "Right": {
+                  "Features": [
+                    "src_bytes",
+                    "rate",
+                    "dpkts",
+                    "ct_state_ttl",
+                    "num_file_creations",
+                    "num_outbound_cmds"
+                  ],
+                  "Left": null,
+                  "Right": null,
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.0
+                  },
+                  "FutureSplitFeature": "",
+                  "PastSplitFeatureValue": "",
+                  "ClassificationLabel": "0",
+                  "Tree": null
+                },
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.39124356362925566
+                },
+                "FutureSplitFeature": "src_bytes",
+                "PastSplitFeatureValue": "1.0",
+                "ClassificationLabel": "0",
+                "Tree": null
+              },
+              "Right": {
+                "Features": [
+                  "src_bytes",
+                  "rate",
+                  "dpkts",
+                  "ct_state_ttl",
+                  "num_file_creations",
+                  "num_outbound_cmds"
+                ],
+                "Left": {
+                  "Features": [
+                    "src_bytes",
+                    "rate",
+                    "dpkts",
+                    "ct_state_ttl",
+                    "num_file_creations",
+                    "num_outbound_cmds"
+                  ],
+                  "Left": {
+                    "Features": [
+                      "src_bytes",
+                      "rate",
+                      "dpkts",
+                      "ct_state_ttl",
+                      "num_file_creations",
+                      "num_outbound_cmds"
+                    ],
+                    "Left": {
+                      "Features": [
+                        "src_bytes",
+                        "rate",
+                        "dpkts",
+                        "ct_state_ttl",
+                        "num_file_creations",
+                        "num_outbound_cmds"
+                      ],
+                      "Left": null,
+                      "Right": null,
+                      "Data": [],
+                      "EntropyValueMap": {
+                        "label": 0.0
+                      },
+                      "FutureSplitFeature": "",
+                      "PastSplitFeatureValue": "198",
+                      "ClassificationLabel": "1",
+                      "Tree": null
+                    },
+                    "Right": {
+                      "Features": [
+                        "src_bytes",
+                        "rate",
+                        "dpkts",
+                        "ct_state_ttl",
+                        "num_file_creations",
+                        "num_outbound_cmds"
+                      ],
+                      "Left": null,
+                      "Right": null,
+                      "Data": [],
+                      "EntropyValueMap": {
+                        "label": 0.0
+                      },
+                      "FutureSplitFeature": "",
+                      "PastSplitFeatureValue": "",
+                      "ClassificationLabel": "0",
+                      "Tree": null
+                    },
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.8112781244591328
+                    },
+                    "FutureSplitFeature": "src_bytes",
+                    "PastSplitFeatureValue": "333333.3215",
+                    "ClassificationLabel": "1",
+                    "Tree": null
+                  },
+                  "Right": {
+                    "Features": [
+                      "src_bytes",
+                      "rate",
+                      "dpkts",
+                      "ct_state_ttl",
+                      "num_file_creations",
+                      "num_outbound_cmds"
+                    ],
+                    "Left": null,
+                    "Right": null,
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.0
+                    },
+                    "FutureSplitFeature": "",
+                    "PastSplitFeatureValue": "",
+                    "ClassificationLabel": "1",
+                    "Tree": null
+                  },
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.2761954276479391
+                  },
+                  "FutureSplitFeature": "rate",
+                  "PastSplitFeatureValue": "",
+                  "ClassificationLabel": "1",
+                  "Tree": null
+                },
+                "Right": {
+                  "Features": [
+                    "src_bytes",
+                    "rate",
+                    "dpkts",
+                    "ct_state_ttl",
+                    "num_file_creations",
+                    "num_outbound_cmds"
+                  ],
+                  "Left": {
+                    "Features": [
+                      "src_bytes",
+                      "rate",
+                      "dpkts",
+                      "ct_state_ttl",
+                      "num_file_creations",
+                      "num_outbound_cmds"
+                    ],
+                    "Left": {
+                      "Features": [
+                        "src_bytes",
+                        "rate",
+                        "dpkts",
+                        "ct_state_ttl",
+                        "num_file_creations",
+                        "num_outbound_cmds"
+                      ],
+                      "Left": {
+                        "Features": [
+                          "src_bytes",
+                          "rate",
+                          "dpkts",
+                          "ct_state_ttl",
+                          "num_file_creations",
+                          "num_outbound_cmds"
+                        ],
+                        "Left": null,
+                        "Right": null,
+                        "Data": [],
+                        "EntropyValueMap": {
+                          "label": 0.0
+                        },
+                        "FutureSplitFeature": "",
+                        "PastSplitFeatureValue": "68185",
+                        "ClassificationLabel": "1",
+                        "Tree": null
+                      },
+                      "Right": {
+                        "Features": [
+                          "src_bytes",
+                          "rate",
+                          "dpkts",
+                          "ct_state_ttl",
+                          "num_file_creations",
+                          "num_outbound_cmds"
+                        ],
+                        "Left": {
+                          "Features": [
+                            "src_bytes",
+                            "rate",
+                            "dpkts",
+                            "ct_state_ttl",
+                            "num_file_creations",
+                            "num_outbound_cmds"
+                          ],
+                          "Left": null,
+                          "Right": null,
+                          "Data": [],
+                          "EntropyValueMap": {
+                            "label": 0.0
+                          },
+                          "FutureSplitFeature": "",
+                          "PastSplitFeatureValue": "14.0",
+                          "ClassificationLabel": "1",
+                          "Tree": null
+                        },
+                        "Right": {
+                          "Features": [
+                            "src_bytes",
+                            "rate",
+                            "dpkts",
+                            "ct_state_ttl",
+                            "num_file_creations",
+                            "num_outbound_cmds"
+                          ],
+                          "Left": {
+                            "Features": [
+                              "src_bytes",
+                              "rate",
+                              "dpkts",
+                              "ct_state_ttl",
+                              "num_file_creations",
+                              "num_outbound_cmds"
+                            ],
+                            "Left": null,
+                            "Right": null,
+                            "Data": [],
+                            "EntropyValueMap": {
+                              "label": 0.0
+                            },
+                            "FutureSplitFeature": "",
+                            "PastSplitFeatureValue": "900",
+                            "ClassificationLabel": "0",
+                            "Tree": null
+                          },
+                          "Right": {
+                            "Features": [
+                              "src_bytes",
+                              "rate",
+                              "dpkts",
+                              "ct_state_ttl",
+                              "num_file_creations",
+                              "num_outbound_cmds"
+                            ],
+                            "Left": null,
+                            "Right": null,
+                            "Data": [],
+                            "EntropyValueMap": {
+                              "label": 0.0
+                            },
+                            "FutureSplitFeature": "",
+                            "PastSplitFeatureValue": "",
+                            "ClassificationLabel": "1",
+                            "Tree": null
+                          },
+                          "Data": [],
+                          "EntropyValueMap": {
+                            "label": 0.8112781244591328
+                          },
+                          "FutureSplitFeature": "src_bytes",
+                          "PastSplitFeatureValue": "",
+                          "ClassificationLabel": "0",
+                          "Tree": null
+                        },
+                        "Data": [],
+                        "EntropyValueMap": {
+                          "label": 0.9709505944546687
+                        },
+                        "FutureSplitFeature": "dpkts",
+                        "PastSplitFeatureValue": "",
+                        "ClassificationLabel": "0",
+                        "Tree": null
+                      },
+                      "Data": [],
+                      "EntropyValueMap": {
+                        "label": 1.0
+                      },
+                      "FutureSplitFeature": "src_bytes",
+                      "PastSplitFeatureValue": "1.0",
+                      "ClassificationLabel": "1",
+                      "Tree": null
+                    },
+                    "Right": {
+                      "Features": [
+                        "src_bytes",
+                        "rate",
+                        "dpkts",
+                        "ct_state_ttl",
+                        "num_file_creations",
+                        "num_outbound_cmds"
+                      ],
+                      "Left": {
+                        "Features": [
+                          "src_bytes",
+                          "rate",
+                          "dpkts",
+                          "ct_state_ttl",
+                          "num_file_creations",
+                          "num_outbound_cmds"
+                        ],
+                        "Left": null,
+                        "Right": null,
+                        "Data": [],
+                        "EntropyValueMap": {
+                          "label": 0.8112781244591328
+                        },
+                        "FutureSplitFeature": "",
+                        "PastSplitFeatureValue": "",
+                        "ClassificationLabel": "0",
+                        "Tree": null
+                      },
+                      "Right": {
+                        "Features": [
+                          "src_bytes",
+                          "rate",
+                          "dpkts",
+                          "ct_state_ttl",
+                          "num_file_creations",
+                          "num_outbound_cmds"
+                        ],
+                        "Left": null,
+                        "Right": null,
+                        "Data": [],
+                        "EntropyValueMap": {
+                          "label": 0.0
+                        },
+                        "FutureSplitFeature": "rate",
+                        "PastSplitFeatureValue": "",
+                        "ClassificationLabel": "0",
+                        "Tree": null
+                      },
+                      "Data": [],
+                      "EntropyValueMap": {
+                        "label": 0.5032583347756457
+                      },
+                      "FutureSplitFeature": "rate",
+                      "PastSplitFeatureValue": "",
+                      "ClassificationLabel": "0",
+                      "Tree": null
+                    },
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.8366407419411672
+                    },
+                    "FutureSplitFeature": "ct_state_ttl",
+                    "PastSplitFeatureValue": "8.524991",
+                    "ClassificationLabel": "0",
+                    "Tree": null
+                  },
+                  "Right": {
+                    "Features": [
+                      "src_bytes",
+                      "rate",
+                      "dpkts",
+                      "ct_state_ttl",
+                      "num_file_creations",
+                      "num_outbound_cmds"
+                    ],
+                    "Left": {
+                      "Features": [
+                        "src_bytes",
+                        "rate",
+                        "dpkts",
+                        "ct_state_ttl",
+                        "num_file_creations",
+                        "num_outbound_cmds"
+                      ],
+                      "Left": null,
+                      "Right": null,
+                      "Data": [],
+                      "EntropyValueMap": {
+                        "label": 0.0
+                      },
+                      "FutureSplitFeature": "",
+                      "PastSplitFeatureValue": "608",
+                      "ClassificationLabel": "1",
+                      "Tree": null
+                    },
+                    "Right": {
+                      "Features": [
+                        "src_bytes",
+                        "rate",
+                        "dpkts",
+                        "ct_state_ttl",
+                        "num_file_creations",
+                        "num_outbound_cmds"
+                      ],
+                      "Left": null,
+                      "Right": {
+                        "Features": [
+                          "src_bytes",
+                          "rate",
+                          "dpkts",
+                          "ct_state_ttl",
+                          "num_file_creations",
+                          "num_outbound_cmds"
+                        ],
+                        "Left": null,
+                        "Right": null,
+                        "Data": [],
+                        "EntropyValueMap": {
+                          "label": 0.0
+                        },
+                        "FutureSplitFeature": "src_bytes",
+                        "PastSplitFeatureValue": "",
+                        "ClassificationLabel": "1",
+                        "Tree": null
+                      },
+                      "Data": [],
+                      "EntropyValueMap": {
+                        "label": 1.0
+                      },
+                      "FutureSplitFeature": "src_bytes",
+                      "PastSplitFeatureValue": "",
+                      "ClassificationLabel": "1",
+                      "Tree": null
+                    },
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.5916727785823274
+                    },
+                    "FutureSplitFeature": "src_bytes",
+                    "PastSplitFeatureValue": "",
+                    "ClassificationLabel": "1",
+                    "Tree": null
+                  },
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.9852281360342515
+                  },
+                  "FutureSplitFeature": "rate",
+                  "PastSplitFeatureValue": "",
+                  "ClassificationLabel": "0",
+                  "Tree": null
+                },
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.8926230133850988
+                },
+                "FutureSplitFeature": "src_bytes",
+                "PastSplitFeatureValue": "",
+                "ClassificationLabel": "1",
+                "Tree": null
+              },
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.9940302114769565
+              },
+              "FutureSplitFeature": "ct_state_ttl",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "1",
+              "Tree": null
+            },
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.6588630671559421
+            },
+            "FutureSplitFeature": "rate",
+            "PastSplitFeatureValue": "",
+            "ClassificationLabel": "0",
+            "Tree": null
+          },
+          "Data": [],
+          "EntropyValueMap": {
+            "label": 0.9967619027568131
+          },
+          "FutureSplitFeature": "dpkts",
+          "PastSplitFeatureValue": "",
+          "ClassificationLabel": "0",
+          "Tree": null
+        },
+        "Data": [],
+        "EntropyValueMap": {
+          "label": 0.851962125802179
+        },
+        "FutureSplitFeature": "src_bytes",
+        "PastSplitFeatureValue": "",
+        "ClassificationLabel": "1",
+        "Tree": null
+      },
+      "FeatureTypesMap": {
+        "src_bytes": "CONTINUOUS",
+        "rate": "CONTINUOUS",
+        "ct_state_ttl": "CONTINUOUS",
+        "num_outbound_cmds": "DISCRETE",
+        "dpkts": "CONTINUOUS",
+        "num_file_creations": "DISCRETE"
+      },
+      "UniqueValueMap": null
+    },
+    {
+      "Head": {
+        "Features": [
+          "urgent",
+          "src_bytes",
+          "same_srv_rate",
+          "spkts",
+          "hot",
+          "dst_host_srv_diff_host_rate"
+        ],
+        "Left": {
+          "Features": [
+            "urgent",
+            "src_bytes",
+            "same_srv_rate",
+            "spkts",
+            "hot",
+            "dst_host_srv_diff_host_rate"
+          ],
+          "Left": null,
+          "Right": null,
+          "Data": [],
+          "EntropyValueMap": {
+            "label": 0.0
+          },
+          "FutureSplitFeature": "",
+          "PastSplitFeatureValue": "",
+          "ClassificationLabel": "1",
+          "Tree": null
+        },
+        "Right": {
+          "Features": [
+            "urgent",
+            "src_bytes",
+            "same_srv_rate",
+            "spkts",
+            "hot",
+            "dst_host_srv_diff_host_rate"
+          ],
+          "Left": {
+            "Features": [
+              "urgent",
+              "src_bytes",
+              "same_srv_rate",
+              "spkts",
+              "hot",
+              "dst_host_srv_diff_host_rate"
+            ],
+            "Left": {
+              "Features": [
+                "urgent",
+                "src_bytes",
+                "same_srv_rate",
+                "spkts",
+                "hot",
+                "dst_host_srv_diff_host_rate"
+              ],
+              "Left": null,
+              "Right": null,
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.0
+              },
+              "FutureSplitFeature": "",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "1",
+              "Tree": null
+            },
+            "Right": {
+              "Features": [
+                "urgent",
+                "src_bytes",
+                "same_srv_rate",
+                "spkts",
+                "hot",
+                "dst_host_srv_diff_host_rate"
+              ],
+              "Left": null,
+              "Right": null,
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.999799616411146
+              },
+              "FutureSplitFeature": "spkts",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "1",
+              "Tree": null
+            },
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.8029533842444374
+            },
+            "FutureSplitFeature": "src_bytes",
+            "PastSplitFeatureValue": "",
+            "ClassificationLabel": "1",
+            "Tree": null
+          },
+          "Right": {
+            "Features": [
+              "urgent",
+              "src_bytes",
+              "same_srv_rate",
+              "spkts",
+              "hot",
+              "dst_host_srv_diff_host_rate"
+            ],
+            "Left": {
+              "Features": [
+                "urgent",
+                "src_bytes",
+                "same_srv_rate",
+                "spkts",
+                "hot",
+                "dst_host_srv_diff_host_rate"
+              ],
+              "Left": {
+                "Features": [
+                  "urgent",
+                  "src_bytes",
+                  "same_srv_rate",
+                  "spkts",
+                  "hot",
+                  "dst_host_srv_diff_host_rate"
+                ],
+                "Left": {
+                  "Features": [
+                    "urgent",
+                    "src_bytes",
+                    "same_srv_rate",
+                    "spkts",
+                    "hot",
+                    "dst_host_srv_diff_host_rate"
+                  ],
+                  "Left": null,
+                  "Right": null,
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.0
+                  },
+                  "FutureSplitFeature": "",
+                  "PastSplitFeatureValue": "0.000605864411667",
+                  "ClassificationLabel": "0",
+                  "Tree": null
+                },
+                "Right": {
+                  "Features": [
+                    "urgent",
+                    "src_bytes",
+                    "same_srv_rate",
+                    "spkts",
+                    "hot",
+                    "dst_host_srv_diff_host_rate"
+                  ],
+                  "Left": null,
+                  "Right": null,
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.205592508185083
+                  },
+                  "FutureSplitFeature": "same_srv_rate",
+                  "PastSplitFeatureValue": "",
+                  "ClassificationLabel": "1",
+                  "Tree": null
+                },
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.6997722217733069
+                },
+                "FutureSplitFeature": "spkts",
+                "PastSplitFeatureValue": "",
+                "ClassificationLabel": "1",
+                "Tree": null
+              },
+              "Right": {
+                "Features": [
+                  "urgent",
+                  "src_bytes",
+                  "same_srv_rate",
+                  "spkts",
+                  "hot",
+                  "dst_host_srv_diff_host_rate"
+                ],
+                "Left": {
+                  "Features": [
+                    "urgent",
+                    "src_bytes",
+                    "same_srv_rate",
+                    "spkts",
+                    "hot",
+                    "dst_host_srv_diff_host_rate"
+                  ],
+                  "Left": {
+                    "Features": [
+                      "urgent",
+                      "src_bytes",
+                      "same_srv_rate",
+                      "spkts",
+                      "hot",
+                      "dst_host_srv_diff_host_rate"
+                    ],
+                    "Left": null,
+                    "Right": null,
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.0
+                    },
+                    "FutureSplitFeature": "",
+                    "PastSplitFeatureValue": "105",
+                    "ClassificationLabel": "1",
+                    "Tree": null
+                  },
+                  "Right": {
+                    "Features": [
+                      "urgent",
+                      "src_bytes",
+                      "same_srv_rate",
+                      "spkts",
+                      "hot",
+                      "dst_host_srv_diff_host_rate"
+                    ],
+                    "Left": null,
+                    "Right": null,
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.0
+                    },
+                    "FutureSplitFeature": "",
+                    "PastSplitFeatureValue": "",
+                    "ClassificationLabel": "0",
+                    "Tree": null
+                  },
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.9182958340544894
+                  },
+                  "FutureSplitFeature": "src_bytes",
+                  "PastSplitFeatureValue": "0.0",
+                  "ClassificationLabel": "1",
+                  "Tree": null
+                },
+                "Right": {
+                  "Features": [
+                    "urgent",
+                    "src_bytes",
+                    "same_srv_rate",
+                    "spkts",
+                    "hot",
+                    "dst_host_srv_diff_host_rate"
+                  ],
+                  "Left": {
+                    "Features": [
+                      "urgent",
+                      "src_bytes",
+                      "same_srv_rate",
+                      "spkts",
+                      "hot",
+                      "dst_host_srv_diff_host_rate"
+                    ],
+                    "Left": null,
+                    "Right": null,
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.0
+                    },
+                    "FutureSplitFeature": "",
+                    "PastSplitFeatureValue": "1.16613134525e-05",
+                    "ClassificationLabel": "0",
+                    "Tree": null
+                  },
+                  "Right": {
+                    "Features": [
+                      "urgent",
+                      "src_bytes",
+                      "same_srv_rate",
+                      "spkts",
+                      "hot",
+                      "dst_host_srv_diff_host_rate"
+                    ],
+                    "Left": {
+                      "Features": [
+                        "urgent",
+                        "src_bytes",
+                        "same_srv_rate",
+                        "spkts",
+                        "hot",
+                        "dst_host_srv_diff_host_rate"
+                      ],
+                      "Left": null,
+                      "Right": null,
+                      "Data": [],
+                      "EntropyValueMap": {
+                        "label": 0.0
+                      },
+                      "FutureSplitFeature": "",
+                      "PastSplitFeatureValue": "6.01427952977e-06",
+                      "ClassificationLabel": "0",
+                      "Tree": null
+                    },
+                    "Right": {
+                      "Features": [
+                        "urgent",
+                        "src_bytes",
+                        "same_srv_rate",
+                        "spkts",
+                        "hot",
+                        "dst_host_srv_diff_host_rate"
+                      ],
+                      "Left": null,
+                      "Right": null,
+                      "Data": [],
+                      "EntropyValueMap": {
+                        "label": 0.0
+                      },
+                      "FutureSplitFeature": "",
+                      "PastSplitFeatureValue": "",
+                      "ClassificationLabel": "1",
+                      "Tree": null
+                    },
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.8112781244591328
+                    },
+                    "FutureSplitFeature": "spkts",
+                    "PastSplitFeatureValue": "",
+                    "ClassificationLabel": "0",
+                    "Tree": null
+                  },
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.35335933502142136
+                  },
+                  "FutureSplitFeature": "spkts",
+                  "PastSplitFeatureValue": "",
+                  "ClassificationLabel": "0",
+                  "Tree": null
+                },
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.7424875695421235
+                },
+                "FutureSplitFeature": "dst_host_srv_diff_host_rate",
+                "PastSplitFeatureValue": "",
+                "ClassificationLabel": "0",
+                "Tree": null
+              },
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.9998717566408492
+              },
+              "FutureSplitFeature": "same_srv_rate",
+              "PastSplitFeatureValue": "145",
+              "ClassificationLabel": "1",
+              "Tree": null
+            },
+            "Right": {
+              "Features": [
+                "urgent",
+                "src_bytes",
+                "same_srv_rate",
+                "spkts",
+                "hot",
+                "dst_host_srv_diff_host_rate"
+              ],
+              "Left": null,
+              "Right": null,
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.27742650870032476
+              },
+              "FutureSplitFeature": "spkts",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "0",
+              "Tree": null
+            },
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.6945635321576954
+            },
+            "FutureSplitFeature": "src_bytes",
+            "PastSplitFeatureValue": "",
+            "ClassificationLabel": "0",
+            "Tree": null
+          },
+          "Data": [],
+          "EntropyValueMap": {
+            "label": 0.9973763022630957
+          },
+          "FutureSplitFeature": "same_srv_rate",
+          "PastSplitFeatureValue": "",
+          "ClassificationLabel": "0",
+          "Tree": null
+        },
+        "Data": [],
+        "EntropyValueMap": {
+          "label": 0.8347106916078169
+        },
+        "FutureSplitFeature": "spkts",
+        "PastSplitFeatureValue": "",
+        "ClassificationLabel": "1",
+        "Tree": null
+      },
+      "FeatureTypesMap": {
+        "spkts": "CONTINUOUS",
+        "src_bytes": "CONTINUOUS",
+        "dst_host_srv_diff_host_rate": "CONTINUOUS",
+        "urgent": "DISCRETE",
+        "hot": "DISCRETE",
+        "same_srv_rate": "CONTINUOUS"
+      },
+      "UniqueValueMap": null
+    },
+    {
+      "Head": {
+        "Features": [
+          "duration",
+          "num_shells",
+          "root_shell",
+          "spkts",
+          "num_file_creations",
+          "dinpkt"
+        ],
+        "Left": {
+          "Features": [
+            "duration",
+            "num_shells",
+            "root_shell",
+            "spkts",
+            "num_file_creations",
+            "dinpkt"
+          ],
+          "Left": null,
+          "Right": null,
+          "Data": [],
+          "EntropyValueMap": {
+            "label": 0.0
+          },
+          "FutureSplitFeature": "",
+          "PastSplitFeatureValue": "",
+          "ClassificationLabel": "1",
+          "Tree": null
+        },
+        "Right": {
+          "Features": [
+            "duration",
+            "num_shells",
+            "root_shell",
+            "spkts",
+            "num_file_creations",
+            "dinpkt"
+          ],
+          "Left": {
+            "Features": [
+              "duration",
+              "num_shells",
+              "root_shell",
+              "spkts",
+              "num_file_creations",
+              "dinpkt"
+            ],
+            "Left": {
+              "Features": [
+                "duration",
+                "num_shells",
+                "root_shell",
+                "spkts",
+                "num_file_creations",
+                "dinpkt"
+              ],
+              "Left": null,
+              "Right": null,
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.13303964861069895
+              },
+              "FutureSplitFeature": "duration",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "1",
+              "Tree": null
+            },
+            "Right": {
+              "Features": [
+                "duration",
+                "num_shells",
+                "root_shell",
+                "spkts",
+                "num_file_creations",
+                "dinpkt"
+              ],
+              "Left": {
+                "Features": [
+                  "duration",
+                  "num_shells",
+                  "root_shell",
+                  "spkts",
+                  "num_file_creations",
+                  "dinpkt"
+                ],
+                "Left": {
+                  "Features": [
+                    "duration",
+                    "num_shells",
+                    "root_shell",
+                    "spkts",
+                    "num_file_creations",
+                    "dinpkt"
+                  ],
+                  "Left": {
+                    "Features": [
+                      "duration",
+                      "num_shells",
+                      "root_shell",
+                      "spkts",
+                      "num_file_creations",
+                      "dinpkt"
+                    ],
+                    "Left": null,
+                    "Right": null,
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.0
+                    },
+                    "FutureSplitFeature": "",
+                    "PastSplitFeatureValue": "0.000105906509166",
+                    "ClassificationLabel": "1",
+                    "Tree": null
+                  },
+                  "Right": {
+                    "Features": [
+                      "duration",
+                      "num_shells",
+                      "root_shell",
+                      "spkts",
+                      "num_file_creations",
+                      "dinpkt"
+                    ],
+                    "Left": null,
+                    "Right": null,
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.0
+                    },
+                    "FutureSplitFeature": "",
+                    "PastSplitFeatureValue": "",
+                    "ClassificationLabel": "0",
+                    "Tree": null
+                  },
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.8904916402194913
+                  },
+                  "FutureSplitFeature": "dinpkt",
+                  "PastSplitFeatureValue": "0.0",
+                  "ClassificationLabel": "1",
+                  "Tree": null
+                },
+                "Right": {
+                  "Features": [
+                    "duration",
+                    "num_shells",
+                    "root_shell",
+                    "spkts",
+                    "num_file_creations",
+                    "dinpkt"
+                  ],
+                  "Left": null,
+                  "Right": null,
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.0
+                  },
+                  "FutureSplitFeature": "",
+                  "PastSplitFeatureValue": "",
+                  "ClassificationLabel": "0",
+                  "Tree": null
+                },
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.4991798361885462
+                },
+                "FutureSplitFeature": "duration",
+                "PastSplitFeatureValue": "",
+                "ClassificationLabel": "0",
+                "Tree": null
+              },
+              "Right": {
+                "Features": [
+                  "duration",
+                  "num_shells",
+                  "root_shell",
+                  "spkts",
+                  "num_file_creations",
+                  "dinpkt"
+                ],
+                "Left": {
+                  "Features": [
+                    "duration",
+                    "num_shells",
+                    "root_shell",
+                    "spkts",
+                    "num_file_creations",
+                    "dinpkt"
+                  ],
+                  "Left": {
+                    "Features": [
+                      "duration",
+                      "num_shells",
+                      "root_shell",
+                      "spkts",
+                      "num_file_creations",
+                      "dinpkt"
+                    ],
+                    "Left": null,
+                    "Right": null,
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.0
+                    },
+                    "FutureSplitFeature": "",
+                    "PastSplitFeatureValue": "0.0",
+                    "ClassificationLabel": "1",
+                    "Tree": null
+                  },
+                  "Right": {
+                    "Features": [
+                      "duration",
+                      "num_shells",
+                      "root_shell",
+                      "spkts",
+                      "num_file_creations",
+                      "dinpkt"
+                    ],
+                    "Left": null,
+                    "Right": null,
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.0
+                    },
+                    "FutureSplitFeature": "",
+                    "PastSplitFeatureValue": "",
+                    "ClassificationLabel": "0",
+                    "Tree": null
+                  },
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.2863969571159562
+                  },
+                  "FutureSplitFeature": "duration",
+                  "PastSplitFeatureValue": "0.00293137678367",
+                  "ClassificationLabel": "0",
+                  "Tree": null
+                },
+                "Right": {
+                  "Features": [
+                    "duration",
+                    "num_shells",
+                    "root_shell",
+                    "spkts",
+                    "num_file_creations",
+                    "dinpkt"
+                  ],
+                  "Left": null,
+                  "Right": null,
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.4537163391869448
+                  },
+                  "FutureSplitFeature": "duration",
+                  "PastSplitFeatureValue": "",
+                  "ClassificationLabel": "1",
+                  "Tree": null
+                },
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.8721617883411699
+                },
+                "FutureSplitFeature": "spkts",
+                "PastSplitFeatureValue": "",
+                "ClassificationLabel": "1",
+                "Tree": null
+              },
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.9737492734347013
+              },
+              "FutureSplitFeature": "duration",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "0",
+              "Tree": null
+            },
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.8904916402194913
+            },
+            "FutureSplitFeature": "spkts",
+            "PastSplitFeatureValue": "0.000702291891642",
+            "ClassificationLabel": "1",
+            "Tree": null
+          },
+          "Right": {
+            "Features": [
+              "duration",
+              "num_shells",
+              "root_shell",
+              "spkts",
+              "num_file_creations",
+              "dinpkt"
+            ],
+            "Left": {
+              "Features": [
+                "duration",
+                "num_shells",
+                "root_shell",
+                "spkts",
+                "num_file_creations",
+                "dinpkt"
+              ],
+              "Left": null,
+              "Right": null,
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.13303964861069895
+              },
+              "FutureSplitFeature": "duration",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "0",
+              "Tree": null
+            },
+            "Right": {
+              "Features": [
+                "duration",
+                "num_shells",
+                "root_shell",
+                "spkts",
+                "num_file_creations",
+                "dinpkt"
+              ],
+              "Left": null,
+              "Right": null,
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.9805974409917271
+              },
+              "FutureSplitFeature": "dinpkt",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "0",
+              "Tree": null
+            },
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.7605024019419502
+            },
+            "FutureSplitFeature": "dinpkt",
+            "PastSplitFeatureValue": "",
+            "ClassificationLabel": "0",
+            "Tree": null
+          },
+          "Data": [],
+          "EntropyValueMap": {
+            "label": 0.9846752813053328
+          },
+          "FutureSplitFeature": "dinpkt",
+          "PastSplitFeatureValue": "",
+          "ClassificationLabel": "1",
+          "Tree": null
+        },
+        "Data": [],
+        "EntropyValueMap": {
+          "label": 0.7483565253136324
+        },
+        "FutureSplitFeature": "spkts",
+        "PastSplitFeatureValue": "",
+        "ClassificationLabel": "1",
+        "Tree": null
+      },
+      "FeatureTypesMap": {
+        "spkts": "CONTINUOUS",
+        "duration": "CONTINUOUS",
+        "num_shells": "DISCRETE",
+        "num_file_creations": "DISCRETE",
+        "root_shell": "DISCRETE",
+        "dinpkt": "CONTINUOUS"
+      },
+      "UniqueValueMap": null
+    },
+    {
+      "Head": {
+        "Features": [
+          "dttl",
+          "is_host_login",
+          "trans_depth",
+          "diff_srv_rate",
+          "djit",
+          "is_ftp_login"
+        ],
+        "Left": {
+          "Features": [
+            "dttl",
+            "is_host_login",
+            "trans_depth",
+            "diff_srv_rate",
+            "djit",
+            "is_ftp_login"
+          ],
+          "Left": {
+            "Features": [
+              "dttl",
+              "is_host_login",
+              "trans_depth",
+              "diff_srv_rate",
+              "djit",
+              "is_ftp_login"
+            ],
+            "Left": null,
+            "Right": null,
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.7522121733341474
+            },
+            "FutureSplitFeature": "dttl",
+            "PastSplitFeatureValue": "0.0",
+            "ClassificationLabel": "1",
+            "Tree": null
+          },
+          "Right": {
+            "Features": [
+              "dttl",
+              "is_host_login",
+              "trans_depth",
+              "diff_srv_rate",
+              "djit",
+              "is_ftp_login"
+            ],
+            "Left": {
+              "Features": [
+                "dttl",
+                "is_host_login",
+                "trans_depth",
+                "diff_srv_rate",
+                "djit",
+                "is_ftp_login"
+              ],
+              "Left": {
+                "Features": [
+                  "dttl",
+                  "is_host_login",
+                  "trans_depth",
+                  "diff_srv_rate",
+                  "djit",
+                  "is_ftp_login"
+                ],
+                "Left": {
+                  "Features": [
+                    "dttl",
+                    "is_host_login",
+                    "trans_depth",
+                    "diff_srv_rate",
+                    "djit",
+                    "is_ftp_login"
+                  ],
+                  "Left": null,
+                  "Right": null,
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.0
+                  },
+                  "FutureSplitFeature": "",
+                  "PastSplitFeatureValue": "0.0",
+                  "ClassificationLabel": "0",
+                  "Tree": null
+                },
+                "Right": {
+                  "Features": [
+                    "dttl",
+                    "is_host_login",
+                    "trans_depth",
+                    "diff_srv_rate",
+                    "djit",
+                    "is_ftp_login"
+                  ],
+                  "Left": null,
+                  "Right": null,
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.0
+                  },
+                  "FutureSplitFeature": "",
+                  "PastSplitFeatureValue": "",
+                  "ClassificationLabel": "1",
+                  "Tree": null
+                },
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.9182958340544894
+                },
+                "FutureSplitFeature": "dttl",
+                "PastSplitFeatureValue": "252.0",
+                "ClassificationLabel": "1",
+                "Tree": null
+              },
+              "Right": {
+                "Features": [
+                  "dttl",
+                  "is_host_login",
+                  "trans_depth",
+                  "diff_srv_rate",
+                  "djit",
+                  "is_ftp_login"
+                ],
+                "Left": {
+                  "Features": [
+                    "dttl",
+                    "is_host_login",
+                    "trans_depth",
+                    "diff_srv_rate",
+                    "djit",
+                    "is_ftp_login"
+                  ],
+                  "Left": null,
+                  "Right": null,
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.0
+                  },
+                  "FutureSplitFeature": "",
+                  "PastSplitFeatureValue": "29.0",
+                  "ClassificationLabel": "0",
+                  "Tree": null
+                },
+                "Right": {
+                  "Features": [
+                    "dttl",
+                    "is_host_login",
+                    "trans_depth",
+                    "diff_srv_rate",
+                    "djit",
+                    "is_ftp_login"
+                  ],
+                  "Left": {
+                    "Features": [
+                      "dttl",
+                      "is_host_login",
+                      "trans_depth",
+                      "diff_srv_rate",
+                      "djit",
+                      "is_ftp_login"
+                    ],
+                    "Left": null,
+                    "Right": null,
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.0
+                    },
+                    "FutureSplitFeature": "",
+                    "PastSplitFeatureValue": "60.0",
+                    "ClassificationLabel": "0",
+                    "Tree": null
+                  },
+                  "Right": {
+                    "Features": [
+                      "dttl",
+                      "is_host_login",
+                      "trans_depth",
+                      "diff_srv_rate",
+                      "djit",
+                      "is_ftp_login"
+                    ],
+                    "Left": null,
+                    "Right": null,
+                    "Data": [],
+                    "EntropyValueMap": {
+                      "label": 0.0
+                    },
+                    "FutureSplitFeature": "",
+                    "PastSplitFeatureValue": "",
+                    "ClassificationLabel": "1",
+                    "Tree": null
+                  },
+                  "Data": [],
+                  "EntropyValueMap": {
+                    "label": 0.9182958340544894
+                  },
+                  "FutureSplitFeature": "dttl",
+                  "PastSplitFeatureValue": "",
+                  "ClassificationLabel": "0",
+                  "Tree": null
+                },
+                "Data": [],
+                "EntropyValueMap": {
+                  "label": 0.4394969869215133
+                },
+                "FutureSplitFeature": "dttl",
+                "PastSplitFeatureValue": "",
+                "ClassificationLabel": "0",
+                "Tree": null
+              },
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.8739810481273578
+              },
+              "FutureSplitFeature": "dttl",
+              "PastSplitFeatureValue": "0.00223738795353",
+              "ClassificationLabel": "0",
+              "Tree": null
+            },
+            "Right": {
+              "Features": [
+                "dttl",
+                "is_host_login",
+                "trans_depth",
+                "diff_srv_rate",
+                "djit",
+                "is_ftp_login"
+              ],
+              "Left": null,
+              "Right": null,
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.0
+              },
+              "FutureSplitFeature": "",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "0",
+              "Tree": null
+            },
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.1987074223264627
+            },
+            "FutureSplitFeature": "trans_depth",
+            "PastSplitFeatureValue": "",
+            "ClassificationLabel": "0",
+            "Tree": null
+          },
+          "Data": [],
+          "EntropyValueMap": {
+            "label": 0.743898745288434
+          },
+          "FutureSplitFeature": "trans_depth",
+          "PastSplitFeatureValue": "0.00486111855833",
+          "ClassificationLabel": "0",
+          "Tree": null
+        },
+        "Right": {
+          "Features": [
+            "dttl",
+            "is_host_login",
+            "trans_depth",
+            "diff_srv_rate",
+            "djit",
+            "is_ftp_login"
+          ],
+          "Left": {
+            "Features": [
+              "dttl",
+              "is_host_login",
+              "trans_depth",
+              "diff_srv_rate",
+              "djit",
+              "is_ftp_login"
+            ],
+            "Left": {
+              "Features": [
+                "dttl",
+                "is_host_login",
+                "trans_depth",
+                "diff_srv_rate",
+                "djit",
+                "is_ftp_login"
+              ],
+              "Left": null,
+              "Right": null,
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.9990102708804813
+              },
+              "FutureSplitFeature": "dttl",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "1",
+              "Tree": null
+            },
+            "Right": {
+              "Features": [
+                "dttl",
+                "is_host_login",
+                "trans_depth",
+                "diff_srv_rate",
+                "djit",
+                "is_ftp_login"
+              ],
+              "Left": null,
+              "Right": null,
+              "Data": [],
+              "EntropyValueMap": {
+                "label": 0.0
+              },
+              "FutureSplitFeature": "",
+              "PastSplitFeatureValue": "",
+              "ClassificationLabel": "0",
+              "Tree": null
+            },
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.7962699368824384
+            },
+            "FutureSplitFeature": "trans_depth",
+            "PastSplitFeatureValue": "0.00295496524995",
+            "ClassificationLabel": "0",
+            "Tree": null
+          },
+          "Right": {
+            "Features": [
+              "dttl",
+              "is_host_login",
+              "trans_depth",
+              "diff_srv_rate",
+              "djit",
+              "is_ftp_login"
+            ],
+            "Left": null,
+            "Right": null,
+            "Data": [],
+            "EntropyValueMap": {
+              "label": 0.09573016832732675
+            },
+            "FutureSplitFeature": "djit",
+            "PastSplitFeatureValue": "",
+            "ClassificationLabel": "1",
+            "Tree": null
+          },
+          "Data": [],
+          "EntropyValueMap": {
+            "label": 0.3644376548306246
+          },
+          "FutureSplitFeature": "trans_depth",
+          "PastSplitFeatureValue": "",
+          "ClassificationLabel": "1",
+          "Tree": null
+        },
+        "Data": [],
+        "EntropyValueMap": {
+          "label": 0.7894099893277893
+        },
+        "FutureSplitFeature": "djit",
+        "PastSplitFeatureValue": "",
+        "ClassificationLabel": "1",
+        "Tree": null
+      },
+      "FeatureTypesMap": {
+        "diff_srv_rate": "CONTINUOUS",
+        "is_ftp_login": "CONTINUOUS",
+        "is_host_login": "DISCRETE",
+        "djit": "CONTINUOUS",
+        "dttl": "CONTINUOUS",
+        "trans_depth": "CONTINUOUS"
+      },
+      "UniqueValueMap": null
+    }
+  ],
+  "Features": [
+    "duration",
+    "src_bytes",
+    "dst_bytes",
+    "land",
+    "wrong_fragment",
+    "urgent",
+    "hot",
+    "num_failed_logins",
+    "num_compromised",
+    "root_shell",
+    "num_file_creations",
+    "num_shells",
+    "num_access_files",
+    "num_outbound_cmds",
+    "is_host_login",
+    "count",
+    "rerror_rate",
+    "same_srv_rate",
+    "diff_srv_rate",
+    "srv_diff_host_rate",
+    "dst_host_count",
+    "dst_host_diff_srv_rate",
+    "dst_host_srv_diff_host_rate",
+    "spkts",
+    "dpkts",
+    "rate",
+    "sttl",
+    "dttl",
+    "sload",
+    "dload",
+    "sinpkt",
+    "dinpkt",
+    "djit",
+    "synack",
+    "smean",
+    "dmean",
+    "trans_depth",
+    "response_body_len",
+    "ct_state_ttl",
+    "is_ftp_login",
+    "ct_flw_http_mthd"
+  ],
+  "Labels": [
+    "attack_cat",
+    "label"
+  ],
+  "UniqueLabels": 0,
+  "NumInstances": -1,
+  "ClassificationTask": "label",
+  "FeatureTypesMap": {},
+  "UniqueValueMap": {
+    "dst_host_count": [],
+    "synack": [],
+    "count": [],
+    "num_outbound_cmds": [],
+    "is_ftp_login": [],
+    "land": [],
+    "response_body_len": [],
+    "djit": [],
+    "dttl": [],
+    "dinpkt": [],
+    "sload": [],
+    "ct_flw_http_mthd": [],
+    "dst_host_diff_srv_rate": [],
+    "sttl": [],
+    "dst_bytes": [],
+    "rate": [],
+    "wrong_fragment": [],
+    "src_bytes": [],
+    "rerror_rate": [],
+    "dst_host_srv_diff_host_rate": [],
+    "smean": [],
+    "dmean": [],
+    "attack_cat": [],
+    "ct_state_ttl": [],
+    "num_shells": [],
+    "urgent": [],
+    "num_failed_logins": [],
+    "sinpkt": [],
+    "dpkts": [],
+    "is_host_login": [],
+    "label": [],
+    "same_srv_rate": [],
+    "trans_depth": [],
+    "spkts": [],
+    "duration": [],
+    "num_compromised": [],
+    "diff_srv_rate": [],
+    "num_access_files": [],
+    "hot": [],
+    "num_file_creations": [],
+    "dload": [],
+    "root_shell": [],
+    "srv_diff_host_rate": []
+  },
+  "Data": [],
+  "CurrentTestData": [],
+  "Size": 5
+}
