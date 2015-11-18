@@ -1,3 +1,4 @@
+package randomforestfiles;
 
 
 
@@ -16,6 +17,11 @@ import java.util.Random;
 
 import com.datastax.driver.core.Row;
 
+import cassandra.CassandraCluster;
+import util.ClassificationType;
+import util.DataNotLoadedException;
+import util.FeatureType;
+
 public class RandomForest implements Serializable {
 
 	static RandomForest currentForest = null;
@@ -30,7 +36,7 @@ public class RandomForest implements Serializable {
 	//uniqueValueMap is used to det
 	ArrayList<Instance >data;
 	ArrayList<Instance> currentTestData;
-	int size;
+	private int size;
 	public String predict(Instance inst){
 
 		HashMap<String,Integer> voteCountMap = new HashMap<>();
@@ -89,7 +95,7 @@ public class RandomForest implements Serializable {
 		uniqueValueMap = new HashMap<>();
 		featureTypesMap = new HashMap<>();
 		forest = new ArrayList<>();
-		this.size = size;
+		this.setSize(size);
 		RandomForest.currentForest = this;
 	}
 	public RandomForest(String type,int size){
@@ -104,13 +110,13 @@ public class RandomForest implements Serializable {
 		//			System.out.println("Creating tree #" + (i+1));
 		//			}
 		createTree();
-		size++;
+		setSize(getSize() + 1);
 
 
 	}
 	public void addTree(DecisionTree tree){
 		forest.add(tree);
-		size++;
+		setSize(getSize() + 1);
 	}
 	public void setSize(int size){
 		this.size = size;
@@ -123,7 +129,7 @@ public class RandomForest implements Serializable {
 		
 		DecisionTree tree = new DecisionTree(new DecisionTreeNode(
 				RandomForestUtils.getSampleFeatures(this.features),sampleData,null));
-		tree.head.tree = tree;
+		tree.getHead().tree = tree;
 		try {
 			tree.buildTree();
 		} catch (DataNotLoadedException e) {
@@ -217,11 +223,14 @@ public class RandomForest implements Serializable {
 	//	void pruneForest(int i){
 	//		forest = (ArrayList<DecisionTree>) forest.subList(0, i);
 	//	}
-	void clearData(){
+	public void clearData(){
 		data = new ArrayList<>();
 		currentTestData = new ArrayList<>();
 		for(DecisionTree tree : forest){
 			tree.clearData();
 		}
+	}
+	public int getSize() {
+		return size;
 	}
 }

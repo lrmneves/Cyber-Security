@@ -1,3 +1,4 @@
+package hadoop;
 //import org.apache.cassandra.hadoop.ColumnFamilyInputFormat;
 //import org.apache.cassandra.hadoop.ColumnFamilyRecordReader;
 //

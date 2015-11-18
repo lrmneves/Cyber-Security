@@ -1,3 +1,4 @@
+package hadoop;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -15,6 +16,10 @@ import com.datastax.driver.core.Row;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import cassandra.CassandraCluster;
+import randomforestfiles.RandomForest;
+import util.TreeSerializer;
 
 import org.apache.hadoop.io.Text;
 import org.apache.cassandra.hadoop.*;
@@ -76,7 +81,7 @@ public class HadoopDriver{
 			if( i == 0){
 				//config first pass for decision tree
 				//set number of trees
-				job.getConfiguration().setInt("trees",5);
+				job.getConfiguration().setInt("trees",1000);
 				job.setMapperClass(DecisionTreeMapper.class);
 				ConfigHelper.setInputColumnFamily(job.getConfiguration(),
 						CassandraCluster.getKeyspace(), "cyber_sec");
@@ -130,7 +135,7 @@ public class HadoopDriver{
 		forest =(RandomForest) gson.fromJson(CassandraCluster.getForestString(exp),RandomForest.class);
 		forest.initializeHeaders();
 		TreeSerializer.serializeTree(forest, "/Users/lrmneves/workspace/Fall 2015/BigData/Cyber-Security/output/");
-		CassandraCluster.persistErrorValues(exp,"test_hadoop",forest.size,1-forest.predictLabels());
+		CassandraCluster.persistErrorValues(exp,"test_hadoop",forest.getSize(),1-forest.predictLabels());
 		
 		CassandraCluster.close();
 

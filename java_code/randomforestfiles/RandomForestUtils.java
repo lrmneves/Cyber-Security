@@ -1,3 +1,4 @@
+package randomforestfiles;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -8,6 +9,8 @@ import java.util.List;
 import java.util.Random;
 
 import com.datastax.driver.core.Row;
+
+import cassandra.CassandraCluster;
 
 public class RandomForestUtils {
 	public static final String  CSV_SPLIT_BY = ",";//value to split csv data

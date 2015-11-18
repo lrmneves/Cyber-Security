@@ -1,7 +1,11 @@
+package randomforestfiles;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+
+import util.DataNotLoadedException;
+import util.FeatureType;
 /**
  * Function to load data, initialize tree and run classifier.
  * @author lrmneves
@@ -12,7 +16,7 @@ public class DecisionTree implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	DecisionTreeNode head;//tree head
+	private DecisionTreeNode head;//tree head
 	static String [] features;//names of the features in header
 	static int uniqueLabels;//number of unique labels for the classification task
 	//	int numInstances = -1;//number of instances on training data
@@ -20,7 +24,7 @@ public class DecisionTree implements Serializable{
 	HashMap<String,HashSet<String>> uniqueValueMap;//map to count the number of unique values for each feature 
 
 	public DecisionTree(DecisionTreeNode head){
-		this.head = head;
+		this.setHead(head);
 		head.tree=this;
 		featureTypesMap = null;
 		uniqueValueMap = null;
@@ -34,7 +38,7 @@ public class DecisionTree implements Serializable{
 	 * @return
 	 */
 	public String predict(Instance inst) {
-		DecisionTreeNode current = head;
+		DecisionTreeNode current = getHead();
 
 		while(!current.isLeaf()){
 			String splitFeature = current.futureSplitFeature;
@@ -66,8 +70,8 @@ public class DecisionTree implements Serializable{
 	 * @throws DataNotLoadedException
 	 */
 	public void buildTree() throws DataNotLoadedException{
-		this.head.growTree();
-		calculateLabels(this.head);
+		this.getHead().growTree();
+		calculateLabels(this.getHead());
 	}
 	public void calculateLabels(DecisionTreeNode node){
 		node.calculateClassLabel();
@@ -75,26 +79,26 @@ public class DecisionTree implements Serializable{
 		if(node.right != null) calculateLabels(node.right);
 	}
 	public void clearData(){
-		this.head.clearData();
+		this.getHead().clearData();
 		uniqueValueMap = null;
 		
 	}
 
 
 	public void addInstance(Instance inst) {
-		head.addInstance(inst);
+		getHead().addInstance(inst);
 	}
 	public void setFeatures(String[] features){
-		head.setFeatures(features);
+		getHead().setFeatures(features);
 	}
 
 	public void createMaps(){
 		uniqueValueMap = new HashMap<>();
 		featureTypesMap = new HashMap<>();
-		for(String f: head.features){
+		for(String f: getHead().features){
 			uniqueValueMap.put(f, new HashSet<String>());
 		}
-		for(Instance inst : head.data){
+		for(Instance inst : getHead().data){
 			for(String f : uniqueValueMap.keySet()){
 				uniqueValueMap.get(f).add(inst.attributes.get(f));
 			}
@@ -108,6 +112,19 @@ public class DecisionTree implements Serializable{
 		}
 
 	}
+
+
+	public DecisionTreeNode getHead() {
+		return head;
+	}
+
+
+	public void setHead(DecisionTreeNode head) {
+		this.head = head;
+	}
+
+
+
 
 
 

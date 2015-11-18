@@ -1,3 +1,4 @@
+package util;
 /**
  * Values for defining the classifier to be binary or multi-class
  * @author lrmneves

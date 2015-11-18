@@ -1,3 +1,4 @@
+package util;
 /**
  * Enum to define the two types of features
  * @author lrmneves

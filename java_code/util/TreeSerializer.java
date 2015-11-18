@@ -1,3 +1,4 @@
+package util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,6 +13,8 @@ import java.io.UnsupportedEncodingException;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import randomforestfiles.RandomForest;
 
 //import java.io.File;
 //import org.apache.avro.Schema;
@@ -29,11 +32,11 @@ public class TreeSerializer {
 	static void purgeDirectory(File dir) {
 	    for (File file: dir.listFiles()) {
 	        if (file.isDirectory()) purgeDirectory(file);
-	        file.delete();
+//	        file.delete();
 	    }
 	}
 	
-	static String serializeTree(RandomForest forest, String path){
+	public static String serializeTree(RandomForest forest, String path){
 		return serializeTree(forest,path,"forest.json");
 	}
 
@@ -46,7 +49,7 @@ public class TreeSerializer {
 				.serializeNulls()
 				.create();
 		
-		purgeDirectory(new File(path));
+//		purgeDirectory(new File(path));
 
 
 		PrintWriter writer = null;

@@ -1,3 +1,4 @@
+package hadoop;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.CharacterCodingException;
@@ -16,6 +17,8 @@ import org.apache.log4j.Logger;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import randomforestfiles.Instance;
 
 import org.apache.cassandra.db.Cell;
 

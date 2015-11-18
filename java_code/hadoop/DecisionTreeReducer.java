@@ -1,3 +1,4 @@
+package hadoop;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -13,6 +14,12 @@ import org.apache.log4j.Logger;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import randomforestfiles.DecisionTree;
+import randomforestfiles.DecisionTreeNode;
+import randomforestfiles.Instance;
+import randomforestfiles.RandomForestUtils;
+import util.DataNotLoadedException;
 
 import org.apache.hadoop.io.Text;
 public class DecisionTreeReducer extends Reducer<IntWritable , Text, ByteBuffer, List<Mutation>>{
@@ -36,10 +43,10 @@ public class DecisionTreeReducer extends Reducer<IntWritable , Text, ByteBuffer,
     		tree.addInstance((Instance) gson.fromJson(value,Instance.class));
         }
        
-		int featuresSize = tree.head.data.get(0).attributes.keySet().size();
+		int featuresSize = tree.getHead().getData().get(0).getAttributes().keySet().size();
 		String [] features = new String[featuresSize];
 		int idx = 0;
-		for (String f : tree.head.data.get(0).attributes.keySet()){
+		for (String f : tree.getHead().getData().get(0).getAttributes().keySet()){
 			features[idx++] = f;
 			
 		}
@@ -56,7 +63,7 @@ public class DecisionTreeReducer extends Reducer<IntWritable , Text, ByteBuffer,
 		
 		
 		List<Mutation> v = Collections.singletonList(getMutation(treeJson));
-		context.write(ByteBufferUtil.bytes(key.get()), v);
+		context.write(ByteBufferUtil.bytes(String.valueOf(key.get())), v);
 
 	} 
 	

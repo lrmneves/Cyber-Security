@@ -1,3 +1,4 @@
+package test;
 import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
@@ -12,6 +13,9 @@ import org.junit.Test;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
+
+import cassandra.CassandraCluster;
+import randomforestfiles.RandomForest;
 /**
  * UnitTest to test features and assert Accuracy. Got 76% accuracy on test set using around 50k instances,
  * 40k for training and 10k for test
@@ -39,62 +43,62 @@ public class DecisionTreeTest {
 				}
 				CassandraCluster.close();
 			}
-	public double std(ArrayList<Double> list){
-		double mean = mean(list);
-		for( int i = 0; i < list.size();i++){
-			list.set(i, Math.pow(list.get(i) - mean, 2));
-		}
-		double variance = mean(list);
-		return Math.sqrt(variance);
-	}
-	public double mean(ArrayList<Double> list){
-		double sum = 0;
-		for(double n : list){
-			sum+=n;
-		}
-		return sum/list.size();
-	}
-
-	@Test
-	public void CreateTreeTest() throws DataNotLoadedException {
-
-		CassandraCluster.connect();
-
-		forest.loadData();
-
-		System.out.println("Loaded Data");
-		int N = 10;
-		ArrayList<Double> list = new ArrayList<>();
-		String type = "train";
-		Date date= new Date();
-		long time = date.getTime();
-		String exp = type + time;
-		for(int i = 0; i < N; i++){
-			forest.growForest();
-			double error = forest.testPrediction();
-			CassandraCluster.persistErrorValues(exp,type,i+1,error);
-		}
-		System.out.println("Grew forest and saved error values");
-
-		StringBuilder builder = new StringBuilder();
-		builder.append("Trees,Error(%)").append("\n");
-		int idx = 0;
-		double min = Integer.MAX_VALUE;
-		for(int i = 1; i < list.size()+1;i++){
-
-			builder.append(i + ","+list.get(i-1)).append("\n");
-		}
-		TreeSerializer.serializeTree(forest, modelDir);
-		//		forest.pruneForest(idx);
-		//		TreeSerializer.serializeTree(forest, modelDir,"bestModel.json");
-
-		System.out.println("Wrote Json");
-
-
-		CassandraCluster.close();
-
-	}
-
+//	public double std(ArrayList<Double> list){
+//		double mean = mean(list);
+//		for( int i = 0; i < list.size();i++){
+//			list.set(i, Math.pow(list.get(i) - mean, 2));
+//		}
+//		double variance = mean(list);
+//		return Math.sqrt(variance);
+//	}
+//	public double mean(ArrayList<Double> list){
+//		double sum = 0;
+//		for(double n : list){
+//			sum+=n;
+//		}
+//		return sum/list.size();
+//	}
+//
+//	@Test
+//	public void CreateTreeTest() throws DataNotLoadedException {
+//
+//		CassandraCluster.connect();
+//
+//		forest.loadData();
+//
+//		System.out.println("Loaded Data");
+//		int N = 10;
+//		ArrayList<Double> list = new ArrayList<>();
+//		String type = "train";
+//		Date date= new Date();
+//		long time = date.getTime();
+//		String exp = type + time;
+//		for(int i = 0; i < N; i++){
+//			forest.growForest();
+//			double error = forest.testPrediction();
+//			CassandraCluster.persistErrorValues(exp,type,i+1,error);
+//		}
+//		System.out.println("Grew forest and saved error values");
+//
+//		StringBuilder builder = new StringBuilder();
+//		builder.append("Trees,Error(%)").append("\n");
+//		int idx = 0;
+//		double min = Integer.MAX_VALUE;
+//		for(int i = 1; i < list.size()+1;i++){
+//
+//			builder.append(i + ","+list.get(i-1)).append("\n");
+//		}
+//		TreeSerializer.serializeTree(forest, modelDir);
+//		//		forest.pruneForest(idx);
+//		//		TreeSerializer.serializeTree(forest, modelDir,"bestModel.json");
+//
+//		System.out.println("Wrote Json");
+//
+//
+//		CassandraCluster.close();
+//
+//	}
+//
 
 //	@Test
 //	public void reuseModelTest(){

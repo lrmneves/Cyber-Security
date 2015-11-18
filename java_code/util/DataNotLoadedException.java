@@ -1,3 +1,4 @@
+package util;
 
 public class DataNotLoadedException extends Exception {
 	public DataNotLoadedException() { super(); }

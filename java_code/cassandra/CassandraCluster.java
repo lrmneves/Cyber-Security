@@ -1,3 +1,11 @@
+package cassandra;
+import static java.lang.System.out;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Host;
 import com.datastax.driver.core.Metadata;
@@ -6,13 +14,7 @@ import com.datastax.driver.core.Session;
 import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 
-import static java.lang.System.out;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.util.List;
+import randomforestfiles.RandomForestUtils;
 
 
 public class CassandraCluster

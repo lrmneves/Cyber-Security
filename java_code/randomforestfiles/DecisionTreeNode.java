@@ -1,3 +1,4 @@
+package randomforestfiles;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,6 +7,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Stack;
+
+import util.ClassificationType;
+import util.DataNotLoadedException;
+import util.FeatureType;
 
 public class DecisionTreeNode implements Serializable {
 	/**

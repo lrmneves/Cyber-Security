@@ -1,15 +1,11 @@
+package hadoop;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
-import org.apache.cassandra.thrift.Column;
 import org.apache.cassandra.thrift.ColumnOrSuperColumn;
 import org.apache.cassandra.thrift.Mutation;
 import org.apache.cassandra.utils.ByteBufferUtil;
@@ -20,6 +16,9 @@ import org.apache.log4j.Logger;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import randomforestfiles.DecisionTree;
+import randomforestfiles.RandomForest;
 
 import org.apache.hadoop.io.Text;
 public class RandomForestReducer extends Reducer<IntWritable , Text, ByteBuffer, List<Mutation>>{
